@@ -72,6 +72,6 @@ int comprobarID(Employee* list,int len,int id);
  * \return int
  *
  */
-int printEmployees(Employee* list, int length);
+int printEmployees(Employee* list, int length,eSector* sectores);
 
 #endif // FUNCIONES_H_INCLUDED

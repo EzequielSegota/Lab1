@@ -12,13 +12,22 @@ int main()
     char seguir='s';
     initEmployees(list,ELEMENTS);
 
+    eSector sectores[] =
+    {
+    {1,"RRHH"},
+    {2,"Ventas"},
+    {3,"Compras"},
+    {4, "Contable"},
+    {5,"Sistemas"}
+    };
+
     do
     {
         switch(menu())
         {
             case 1:
                 system("cls");
-                if(addEmployee(list, ELEMENTS)==-1)
+                if(addEmployee(list, ELEMENTS,)==-1)
                 {
                     printf("\nError, no se puede agregar usuario.");
                 }
@@ -29,7 +38,15 @@ int main()
                 break;
             case 2:
                 system("cls");
+                if(flag==1)
+                {
 
+                }
+                else
+                {
+                    printf("No se han ingresado empleados");
+                }
+                break;
             case 5:
                 printf("Adios.");
                 seguir='n';

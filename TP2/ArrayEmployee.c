@@ -96,11 +96,11 @@ int addEmployee(Employee* list, int len)
     return retorno;
 }
 
-int printEmployees(Employee* list, int length)
+int printEmployees(Employee* list, int length,eSector* sectores)
 {
     int i;
-    for(i=0i<length;i++)
+    for(i=0;i<length;i++)
     {
-        printf("\nNombre:%s\tApellido:%s\tID:%d\tSector:%d\t")
+        printf("\nNombre:%s\tApellido:%s\tSalario:%.2f\tSector:%s\t",list[i].name,list[i].lastName,list[i].salary,l);
     }
 }
