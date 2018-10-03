@@ -1,0 +1,43 @@
+# depslib dependency file v1.0
+1538577651 source:c:\users\alumno\desktop\clase 80\practica parcial\almuerzo.c
+
+1538577871 source:c:\users\alumno\desktop\clase 80\practica parcial\empleados.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"empleados.h"
+
+1538579237 source:c:\users\alumno\desktop\clase 80\practica parcial\fecha.c
+	"fecha.h"
+
+1538578264 source:c:\users\alumno\desktop\clase 80\practica parcial\sector.c
+	"sector.h"
+
+1538570996 source:c:\users\alumno\desktop\clase 80\practica parcial\validaciones.c
+
+1538579423 source:c:\users\alumno\desktop\clase 80\practica parcial\main.c
+	<stdio.h>
+	<stdlib.h>
+	"validaciones.h"
+	"empleados.h"
+	"sector.h"
+	"menu.h"
+	"almuerzo.h"
+
+1538572397 c:\users\alumno\desktop\clase 80\practica parcial\validaciones.h
+
+1538579423 c:\users\alumno\desktop\clase 80\practica parcial\empleados.h
+	"fecha.h"
+	"sector.h"
+
+1538579237 c:\users\alumno\desktop\clase 80\practica parcial\fecha.h
+
+1538578264 c:\users\alumno\desktop\clase 80\practica parcial\sector.h
+
+1538577651 c:\users\alumno\desktop\clase 80\practica parcial\menu.h
+
+1538577651 c:\users\alumno\desktop\clase 80\practica parcial\almuerzo.h
+	"fecha.h"
+
+1538579237 source:c:\users\alumno\desktop\clase 80\practica parcial\menu.c
+
