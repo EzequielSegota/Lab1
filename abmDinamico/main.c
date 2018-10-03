@@ -48,15 +48,14 @@ void listarEmpleadosPorSector(eEmpleado empleados[],int tam,eSector sec[],int ta
 void ordenarXSectorYNombre(eEmpleado empleados[],int tam,eSector sectores[],int tamSec);
 int menu();
 void mostrarAlmuerzosConEmpleados(eEmpleado empleados[],int tamEmp,eComida comida[],int tamCom,eAlmuerzo almuerzo[],int tamAlm);
-void almuerzosXEmpleados(eEmpleado empleados[],int tamEmp,eComida comida[],int tamCom,eAlmuerzo almuerzo[],int tamAlm);
-
+void almuerzosXEmpleados(eEmpleado empleados[],int tamEmp,eComida comida[],int tamCom,eAlmuerzo almuerzo[],int tamAlm,eSector sectores[],int tamSector);
 
 
 int main()
 {
 
     char seguir = 's';
-    eEmpleado lista[10];
+    eEmpleado lista[20];
     eSector sectores[] =
     {
     {1,"RRHH"},
@@ -100,7 +99,7 @@ int main()
         {120, 1111, 3}
     };
 
-    inicializarEmpleados(lista, 10);
+    inicializarEmpleados(lista, 20);
 
 
     do
@@ -109,31 +108,35 @@ int main()
         {
 
         case 1:
-            agregarEmpleado(lista, 10,sectores,5);
+            agregarEmpleado(lista, 20,sectores,5);
             system("pause");
             break;
         case 2:
-            eliminarEmpleado(lista, 10,sectores,5);
+            eliminarEmpleado(lista, 20,sectores,5);
             break;
         case 3:
-            modificarEmpleado(lista, 10,sectores,5);
+            modificarEmpleado(lista, 20,sectores,5);
             break;
         case 4:
-            mostrarEmpleados(lista, 10,sectores,5);
+            mostrarEmpleados(lista, 20,sectores,5);
             system("pause");
             break;
         case 5:
-            listarEmpleadosPorSector(lista,10,sectores,5);
+            listarEmpleadosPorSector(lista,20,sectores,5);
             system("pause");
             break;
         case 6:
-            ordenarXSectorYNombre(lista,10,sectores,5);
+            ordenarXSectorYNombre(lista,20,sectores,5);
             system("pause");
             break;
         case 7:
             break;
         case 8:
-            mostrarAlmuerzosConEmpleados(lista,10,comidas,5,almuerzos,20);
+            mostrarAlmuerzosConEmpleados(lista,20,comidas,5,almuerzos,20);
+            system("pause");
+            break;
+        case 9:
+            almuerzosXEmpleados(lista,20,comidas,5,almuerzos,20,sectores,5);
             system("pause");
             break;
         case 10:
@@ -203,6 +206,7 @@ int menu()
     printf("6- Listar empleados por sector y ordenados por nombre\n");
     printf("7- Mostrar el/los empleado/s que mas ganan por sector\n");
     printf("8- Mostrar almuerzos con empleados\n");
+    printf("9- Mostrar almuerzos por empleado\n");
     printf("10- Salir\n");
     printf("Ingrese opcion: ");
     fflush(stdin);
@@ -470,4 +474,37 @@ void ordenarXSectorYNombre(eEmpleado empleados[],int tam,eSector sectores[],int 
 }
 
 
+
+
+void almuerzosXEmpleados(eEmpleado empleados[],int tamEmp,eComida comida[],int tamCom,eAlmuerzo almuerzo[],int tamAlm,eSector sectores[],int tamSector)
+{
+    int legajo;
+    int flag=0;
+    system("cls");
+    mostrarEmpleados(empleados,tamEmp,sectores,tamSector);
+    printf("\nIngrese legajo:");
+    scanf("%d",&legajo);
+    system("cls");
+    printf("\nListado de almuerzos legajo:%d ",legajo);
+
+    for(int i=0; i<tamAlm; i++)
+    {
+        if(almuerzo[i].idEmpleado==legajo)
+        {
+            for(int j=0; j<tamCom; j++)
+            {
+                if(comida[j].id==almuerzo[i].idComida)
+                {
+                    printf("\nID:%d\tComida:%s\n",almuerzo[i].id,comida[j].descripcion);
+                }
+            }
+            flag=1;
+        }
+    }
+    if(flag ==0)
+    {
+        printf("\nNo tiene almuerzo.");
+    }
+
+}
 
