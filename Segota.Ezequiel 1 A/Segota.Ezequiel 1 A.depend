@@ -1,0 +1,23 @@
+# depslib dependency file v1.0
+1539010180 source:d:\segota.ezequiel 1 a\main.c
+	<stdio.h>
+	<stdlib.h>
+	"utn.h"
+	"Negocio.h"
+
+1539001791 d:\segota.ezequiel 1 a\utn.h
+
+1539010253 d:\segota.ezequiel 1 a\negocio.h
+
+1539008981 source:d:\segota.ezequiel 1 a\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+
+1539009637 source:d:\segota.ezequiel 1 a\negocio.c
+	<stdio.h>
+	<stdlib.h>
+	"utn.h"
+	"Negocio.h"
+
