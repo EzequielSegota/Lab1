@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1540219571 source:c:\users\alumno\desktop\punteros\ejemplo\ejemplo de buena forma\main.c
+	<stdio.h>
+	<stdlib.h>
+
