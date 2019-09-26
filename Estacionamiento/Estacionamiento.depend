@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1569509017 source:c:\users\alumno\desktop\estacionamiento\main.c
+	"persona.h"
+
+1569509194 c:\users\alumno\desktop\estacionamiento\persona.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1569509194 source:c:\users\alumno\desktop\estacionamiento\persona.c
+	"persona.h"
+
