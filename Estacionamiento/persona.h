@@ -15,6 +15,7 @@ typedef struct
     int id;
     char nombre[32];
     eFecha fechaNac;
+    int estado;
 }ePersona;
 
 typedef struct
@@ -44,7 +45,23 @@ int buscarPersonaPorID(ePersona*,int,int);
 
 int buscarPorPatente(eVehiculo*,int,char*);
 
-void ordenarPorPatente(eVehiculo*,int);
+void ordenarPorPatente(eVehiculo*,int,ePersona*,int);
 
 void ordenarPorNombre(ePersona*,int);
+
+void inicializarPersonas(ePersona*,int);
+
+int menuPrincipal(void);
+
+int buscarLibre(ePersona*, int);
+
+void altaPropietario(ePersona*, int);
+
+void mostrarVehiculosSinDuenio(eVehiculo);
+
+void mostrarVehiculosPorID(eVehiculo*,int,int);
+
+void mostrarPersonasConVehiculos(ePersona*,int,eVehiculo*,int);
+
+void calcularEstadia(eVehiculo*,int);
 #endif // PERSONA_H_INCLUDED

@@ -15,14 +15,13 @@ void hardcodePersonas(ePersona newPersona[],int cant)
         newPersona[i].fechaNac.anio=anio[i];
         newPersona[i].fechaNac.mes=mes[i];
         newPersona[i].fechaNac.dia=dia[i];
+        newPersona[i].estado=1;
     }
 }
 
 void mostrarPersona(ePersona newPersona)
 {
-    printf("\nFecha(dd/mm/aaaa):%d/%d/%d",newPersona.fechaNac.dia,newPersona.fechaNac.mes,newPersona.fechaNac.anio);
-    printf("\nNombre:%s",newPersona.nombre);
-    printf("\nID:%d\n\n",newPersona.id);
+    printf("\n|Fecha(dd/mm/aaaa)\t|Nombre  |\t|ID|\n|%d/%d/%d|\t\t|%s\t|%d|",newPersona.fechaNac.dia,newPersona.fechaNac.mes,newPersona.fechaNac.anio,newPersona.nombre,newPersona.id);
 }
 
 void mostrarPersonas(ePersona newPersona[],int cant)
@@ -37,7 +36,7 @@ void mostrarPersonas(ePersona newPersona[],int cant)
 
 void hardcodeVehiculos(eVehiculo newVehiculo[],int cant)
 {
-    char patente[4][50]={"AAA 111","BBB 222","AA 111 BB","OJ 222 BB"};
+    char patente[4][50]={"AAA 111","BBB 222","AA 111 BB","AAA 111"};//OJ 222 BB
     int dia[4]={26,26,26,26};
     int mes[4]={9,9,9,9};
     int anio[4]={2019,2019,2019,2019};
@@ -60,11 +59,9 @@ void hardcodeVehiculos(eVehiculo newVehiculo[],int cant)
 
 void mostrarVehiculo(eVehiculo vehiculos,ePersona duenio[],int cant)
 {
-    printf("\nPatente:%s",vehiculos.patente);
-    printf("\nFecha de Ingreso(dd/mm/aaaa):%d/%d/%d",vehiculos.fechaIngreso.dia,vehiculos.fechaIngreso.mes,vehiculos.fechaIngreso.anio);
-    printf("\nHora de ingreso:%d",vehiculos.horaIngreso);
-    printf("\nHora de salida:%d",vehiculos.horaSalida);
-    printf("\nDuenio:");
+    printf("\n\nAutos:");
+    printf("\n|Patente\t|Fecha de Ingreso(dd/mm/aaaa)\t|Hora de ingreso\t|Hora de salida|\n|%s|\t|%d/%d/%d|\t\t\t|%d|\t\t\t\t|%d|",vehiculos.patente,vehiculos.fechaIngreso.dia,vehiculos.fechaIngreso.mes,vehiculos.fechaIngreso.anio,vehiculos.horaIngreso,vehiculos.horaSalida);
+    printf("\n\nDuenio:");
     mostrarPersona(duenio[buscarPersonaPorID(duenio,cant,vehiculos.idDuenio)]);
 }
 
@@ -107,7 +104,7 @@ int buscarPorPatente(eVehiculo vehiculos[],int cant,char patenteAux[])
     return retorno;
 }
 
-void ordenarPorPatente(eVehiculo vehiculos[],int cant)
+void ordenarPorPatente(eVehiculo vehiculos[],int cant,ePersona persona[],int cantPersonas)
 {
     eVehiculo aux;
     int i,j;
@@ -116,11 +113,14 @@ void ordenarPorPatente(eVehiculo vehiculos[],int cant)
     {
         for(j=i+1;j<cant;j++)
         {
-            if(strcmp(vehiculos[i].patente,vehiculos[j].patente)==1)
+            if(strcmp(persona[(vehiculos[i].idDuenio)-1].nombre,persona[(vehiculos[j].idDuenio)-1].nombre)==1)
             {
-                aux=vehiculos[i];
-                vehiculos[i]=vehiculos[j];
-                vehiculos[j]=aux;
+                if(strcmp(vehiculos[i].patente,vehiculos[j].patente)==1)
+                {
+                    aux=vehiculos[i];
+                    vehiculos[i]=vehiculos[j];
+                    vehiculos[j]=aux;
+                }
             }
         }
     }
@@ -136,10 +136,103 @@ void ordenarPorNombre(ePersona personas[],int cant)
         {
             if(strcmp(personas[i].nombre,personas[j].nombre)==1)
             {
-                aux=personas[i];
-                personas[i]=personas[j];
-                personas[j]=aux;
+                if(personas[i].fechaNac.anio<personas[j].fechaNac.anio)
+                {
+                    aux=personas[i];
+                    personas[i]=personas[j];
+                    personas[j]=aux;
+                }
             }
         }
     }
+}
+
+void inicializarPersonas(ePersona personas[],int largo)
+{
+    int i;
+    for(i=0;i<largo;i++)
+    {
+        personas[i].estado=0;
+    }
+}
+
+int menuPrincipal(void)
+{
+    int opcion;
+    printf("\n1.Mostrar Propietario");
+    printf("\n2.Ordenar Propietario");
+    printf("\n3.Mostrar Vehiculos");
+    printf("\n4.Ordenar Vehiculos");
+    printf("\n5.Mostrar Vehiculos de un dueño.");
+    printf("\n6.Mostrar Coste de Estadia.");
+
+    printf("\nIngrese una opcion(1-6):");
+    scanf("%d",&opcion);
+
+    return opcion;
+}
+
+int buscarLibre(ePersona personas[], int tam)
+{
+    int i;
+    int libre=-1;
+    for(i=0;i<tam;i++)
+    {
+        if(personas[i].estado==0)
+        {
+           libre=i;
+           break;
+        }
+    }
+    return libre;
+}
+
+void mostrarVehiculosPorID(eVehiculo vehiculos[],int tamVehiculos,int id)
+{
+    int i;
+    for(i=0;i<tamVehiculos;i++)
+    {
+        if(vehiculos[i].idDuenio==id)
+        {
+            mostrarVehiculosSinDuenio(vehiculos[i]);
+        }
+    }
+}
+
+void mostrarVehiculosSinDuenio(eVehiculo vehiculos)
+{
+
+        printf("\n|Patente\t|Fecha de Ingreso(dd/mm/aaaa)\t|Hora de ingreso\t|Hora de salida\n|%s\t|%d/%d/%d\t\t\t|%d\t\t\t|%d|",vehiculos.patente,vehiculos.fechaIngreso.dia,vehiculos.fechaIngreso.mes,vehiculos.fechaIngreso.anio,vehiculos.horaIngreso,vehiculos.horaSalida);
+}
+
+void mostrarPersonasConVehiculos(ePersona newPersona[],int cant,eVehiculo vehiculos[],int tamVehiculos)
+{
+    int i;
+    for(i=0;i<cant;i++)
+    {
+        printf("\n|Fecha(dd/mm/aaaa)\t|Nombre\t|ID|\n|%d/%d/%d\t\t|%s\t|%d|",newPersona[i].fechaNac.dia,newPersona[i].fechaNac.mes,newPersona[i].fechaNac.anio,newPersona[i].nombre,newPersona[i].id);
+        printf("\nAutos:\n");
+        mostrarVehiculosPorID(vehiculos,tamVehiculos,newPersona[i].id);
+        printf("\n");
+    }
+}
+
+void calcularEstadia(eVehiculo vehiculos[],int tamVehiculos)
+{
+    int i;
+    int acumulador;
+    for(i=0;i<tamVehiculos;i++)
+    {
+        acumulador=vehiculos[i].horaSalida-vehiculos[i].horaIngreso;
+        mostrarVehiculosSinDuenio(vehiculos[i]);
+        printf("\n\nHoras que Estuvo:%d\t|Debe pagar:%d\n\n",acumulador,acumulador*100);
+    }
+}
+
+
+
+
+void altaPropietario(ePersona personas[], int tam)
+{
+
 }
