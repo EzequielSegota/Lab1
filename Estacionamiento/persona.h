@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
 typedef struct
 {
     int dia;
@@ -53,15 +54,31 @@ void inicializarPersonas(ePersona*,int);
 
 int menuPrincipal(void);
 
+int siguienteID(ePersona*,int);
+
 int buscarLibre(ePersona*, int);
 
 void altaPropietario(ePersona*, int);
 
 void mostrarVehiculosSinDuenio(eVehiculo);
 
+int menuInformes(ePersona*,int,eVehiculo*,int);
+
 void mostrarVehiculosPorID(eVehiculo*,int,int);
 
 void mostrarPersonasConVehiculos(ePersona*,int,eVehiculo*,int);
 
 void calcularEstadia(eVehiculo*,int);
+
+void bajaPersona(ePersona*,int);
+
+void modificarPersona(ePersona*,int);
+
+int menuModificarPersona();
+
+void altaVehiculo(eVehiculo*,int,ePersona*,int);
+
+void inicializarVehiculos(eVehiculo*,int);
+
+int buscarLibreVehiculo(eVehiculo*,int);
 #endif // PERSONA_H_INCLUDED

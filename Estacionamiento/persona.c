@@ -1,5 +1,5 @@
 #include "persona.h"
-
+#include "utn.h"
 void hardcodePersonas(ePersona newPersona[],int cant)
 {
     int i;
@@ -21,7 +21,7 @@ void hardcodePersonas(ePersona newPersona[],int cant)
 
 void mostrarPersona(ePersona newPersona)
 {
-    printf("\n|Fecha(dd/mm/aaaa)\t|Nombre  |\t|ID|\n|%d/%d/%d|\t\t|%s\t|%d|",newPersona.fechaNac.dia,newPersona.fechaNac.mes,newPersona.fechaNac.anio,newPersona.nombre,newPersona.id);
+    printf("\n|Fecha(dd/mm/aaaa)\t|Nombre\t|ID|\n|%d/%d/%d|\t\t|%s\t|%d|",newPersona.fechaNac.dia,newPersona.fechaNac.mes,newPersona.fechaNac.anio,newPersona.nombre,newPersona.id);
 }
 
 void mostrarPersonas(ePersona newPersona[],int cant)
@@ -29,6 +29,7 @@ void mostrarPersonas(ePersona newPersona[],int cant)
     int i;
     for(i=0;i<cant;i++)
     {
+        if(newPersona[i].estado==1)
        mostrarPersona(newPersona[i]);
     }
 }
@@ -54,21 +55,26 @@ void hardcodeVehiculos(eVehiculo newVehiculo[],int cant)
         newVehiculo[i].fechaIngreso.mes=mes[i];
         newVehiculo[i].fechaIngreso.anio=anio[i];
         newVehiculo[i].idDuenio=idDuenio[i];
+
     }
 }
 
 void mostrarVehiculo(eVehiculo vehiculos,ePersona duenio[],int cant)
 {
-    printf("\n\nAutos:");
-    printf("\n|Patente\t|Fecha de Ingreso(dd/mm/aaaa)\t|Hora de ingreso\t|Hora de salida|\n|%s|\t|%d/%d/%d|\t\t\t|%d|\t\t\t\t|%d|",vehiculos.patente,vehiculos.fechaIngreso.dia,vehiculos.fechaIngreso.mes,vehiculos.fechaIngreso.anio,vehiculos.horaIngreso,vehiculos.horaSalida);
-    printf("\n\nDuenio:");
-    mostrarPersona(duenio[buscarPersonaPorID(duenio,cant,vehiculos.idDuenio)]);
+    int indiceAux;
+    indiceAux=buscarPersonaPorID(duenio,cant,vehiculos.idDuenio);
+    if(duenio[indiceAux].estado==1)
+    {
+        printf("\n\nAutos:");
+        printf("\n|Patente\t|Fecha de Ingreso(dd/mm/aaaa)\t|Hora de ingreso\t|Hora de salida|\n|%s|\t|%d/%d/%d|\t\t\t|%d|\t\t\t\t|%d|",vehiculos.patente,vehiculos.fechaIngreso.dia,vehiculos.fechaIngreso.mes,vehiculos.fechaIngreso.anio,vehiculos.horaIngreso,vehiculos.horaSalida);
+        printf("\n\nDuenio:");
+        mostrarPersona(duenio[indiceAux]);
+    }
 }
 
 void mostrarVehiculos(eVehiculo vehiculos[],int cant,ePersona duenios[],int cantDuenios)
 {
     int i;
-
     for(i=0;i<cant;i++)
     {
         mostrarVehiculo(vehiculos[i],duenios,cantDuenios);
@@ -159,17 +165,32 @@ void inicializarPersonas(ePersona personas[],int largo)
 int menuPrincipal(void)
 {
     int opcion;
-    printf("\n1.Mostrar Propietario");
-    printf("\n2.Ordenar Propietario");
-    printf("\n3.Mostrar Vehiculos");
-    printf("\n4.Ordenar Vehiculos");
-    printf("\n5.Mostrar Vehiculos de un dueño.");
-    printf("\n6.Mostrar Coste de Estadia.");
+    printf("\n1.Alta propietario");
+    printf("\n2.Baja propietario");
+    printf("\n3.Modificar propietario");
+    printf("\n4.Ingreso Vehiculo");
+    printf("\n5.Egreso Vehiculo");
+    printf("\n6.Informes");
 
     printf("\nIngrese una opcion(1-6):");
     scanf("%d",&opcion);
 
     return opcion;
+}
+
+int siguienteID(ePersona personas[], int tam)
+{
+    int i;
+    int vacio=-1;
+    for(i=0;i<tam;i++)
+    {
+        if(personas[i].estado==0)
+        {
+           vacio=i;
+           break;
+        }
+    }
+    return vacio+1;
 }
 
 int buscarLibre(ePersona personas[], int tam)
@@ -210,10 +231,14 @@ void mostrarPersonasConVehiculos(ePersona newPersona[],int cant,eVehiculo vehicu
     int i;
     for(i=0;i<cant;i++)
     {
-        printf("\n|Fecha(dd/mm/aaaa)\t|Nombre\t|ID|\n|%d/%d/%d\t\t|%s\t|%d|",newPersona[i].fechaNac.dia,newPersona[i].fechaNac.mes,newPersona[i].fechaNac.anio,newPersona[i].nombre,newPersona[i].id);
-        printf("\nAutos:\n");
-        mostrarVehiculosPorID(vehiculos,tamVehiculos,newPersona[i].id);
-        printf("\n");
+        if(newPersona[i].estado==1)
+        {
+            printf("\n|Fecha(dd/mm/aaaa)\t|Nombre\t|ID|\n|%d/%d/%d\t\t|%s\t|%d|",newPersona[i].fechaNac.dia,newPersona[i].fechaNac.mes,newPersona[i].fechaNac.anio,newPersona[i].nombre,newPersona[i].id);
+            printf("\nAutos:\n");
+            mostrarVehiculosPorID(vehiculos,tamVehiculos,newPersona[i].id);
+            printf("\n");
+        }
+
     }
 }
 
@@ -229,10 +254,183 @@ void calcularEstadia(eVehiculo vehiculos[],int tamVehiculos)
     }
 }
 
-
-
-
 void altaPropietario(ePersona personas[], int tam)
 {
+    int indiceAux;
+    indiceAux=buscarLibre(personas,tam);
+    if(indiceAux!=-1)
+    {
+        personas[indiceAux].id=siguienteID(personas,tam);
+        getValidString("\nIngrese nombre:","\nError reintente",personas[indiceAux].nombre);
+        personas[indiceAux].fechaNac.dia=getValidInt("\nIngrese dia de nacimiento:","Error entre 1-30",1,30);
+        personas[indiceAux].fechaNac.mes=getValidInt("\nIngrese mes de nacimiento:","Error entre 1-12",1,12);
+        personas[indiceAux].fechaNac.anio=getValidInt("\nIngrese anio de nacimiento:","Error entre 1850-2001",1850,2001);
+        personas[indiceAux].estado=1;
+    }
+    else
+    {
+        printf("\nNo hay lugar!");
+    }
+}
 
+void bajaPersona(ePersona personas[], int tam)
+{
+    char confirmacion;
+    int idAux,indiceAux;
+    idAux=getValidInt("Ingrese un ID:","Error ID incorrecto",0,tam);
+    indiceAux=buscarPersonaPorID(personas,tam,idAux);
+    if(indiceAux!=-1 && personas[indiceAux].estado==1)
+    {
+        system("cls");
+        mostrarPersona(personas[indiceAux]);
+        confirmacion=toupper(confirmacion=getChar("\n\nEsta seguro que desea borrar este usuario?(S/N):"));
+        if(confirmacion=='S')
+            personas[indiceAux].estado=0;
+    }
+    else
+    {
+        printf("\nPersona no encontrada...\n");
+    }
+
+}
+
+void modificarPersona(ePersona personas[], int tam)
+{
+    char confirmacion;
+    int idAux,indiceAux;
+    idAux=getValidInt("\nIngrese un ID:","Error ID incorrecto",0,tam);
+    indiceAux=buscarPersonaPorID(personas,tam,idAux);
+    if(indiceAux!=-1 && personas[indiceAux].estado==1)
+    {
+        system("cls");
+        mostrarPersona(personas[indiceAux]);
+        confirmacion=toupper(confirmacion=getChar("\n\nEsta seguro que desea modificar este usuario?(S/N):"));
+        if(confirmacion=='S')
+        {
+            do
+            {
+              switch(menuModificarPersona())
+              {
+                case 1:
+                system("cls");
+                getValidString("\nIngrese nombre:","\nError, solo letras",personas[indiceAux].nombre);
+                break;
+                case 2:
+                    personas[indiceAux].fechaNac.dia=getValidInt("\nIngrese dia(1-30):","\nError debe ser entre 1-30",1,30);
+                    break;
+                case 3:
+                    personas[indiceAux].fechaNac.mes=getValidInt("\nIngrese mes(1-12):","\nError debe ser entre 1-12",1,12);
+                    break;
+                case 4:
+                    personas[indiceAux].fechaNac.anio=getValidInt("\nIngrese anio(1850-2001):","\nError debe ser entre 1850-2001",1850,2001);
+                    break;
+                case 5:
+                    printf("\nAdios!");
+                    confirmacion='n';
+                    break;
+                default:
+                    printf("\nError\n");
+                    system("pause");
+
+              }
+            }while(confirmacion=='S' || confirmacion=='s');
+
+        }
+    }
+    else
+    {
+        printf("\nPersona no encontrada...\n");
+    }
+}
+
+int menuModificarPersona()
+{
+    int opcion;
+
+    system("cls");
+    printf("\n1.Modificar Nombre.");
+    printf("\n2.Modificar Dia de Nac.");
+    printf("\n3.Modificar Mes de Nac.");
+    printf("\n4.Modificar Anio de Nac.");
+    printf("\n5.Salir.");
+    printf("\nIngrese una opcion(1-5):");
+    scanf("%d",&opcion);
+
+    return opcion;
+}
+
+int menuInformes(ePersona personas[] ,int tamPersonas,eVehiculo vehiculos[] ,int tamVehiculos)
+{
+    int opcion;
+    printf("\n1.Mostrar Propietario");
+    printf("\n2.Ordenar Propietario");
+    printf("\n3.Mostrar Vehiculos");
+    printf("\n4.Ordenar Vehiculos");
+    printf("\n5.Mostrar Vehiculos de un dueño.");
+    printf("\n6.Mostrar Coste de Estadia.");
+
+    printf("\nIngrese una opcion(1-6):");
+    scanf("%d",&opcion);
+
+    return opcion;
+}
+
+void inicializarVehiculos(eVehiculo vehiculo[],int tamVehiculos)
+{
+    int i;
+    for(i=0;i<tamVehiculos;i++)
+    {
+        vehiculo[i].idDuenio=0;
+    }
+}
+
+int buscarLibreVehiculo(eVehiculo vehiculo[] ,int tamVehiculos)
+{
+    int i,libre=-1;
+    for(i=0;i<tamVehiculos;i++)
+    {
+        if(vehiculo[i].idDuenio==0)
+        {
+            libre=i;
+            break;
+        }
+    }
+    return libre;
+}
+
+void altaVehiculo(eVehiculo vehiculos[] ,int tamVehiculos,ePersona personas[],int tamPersonas)
+{
+    char patenteAux[52];
+    int indiceAux,idAux;
+    getString("\nIngrese Patente:",patenteAux);
+    indiceAux=buscarLibreVehiculo(vehiculos,tamVehiculos);
+    if(indiceAux!=-1)
+    {
+        while(esAlfaNumerico(patenteAux)!=1)
+        {
+            system("cls");
+            fflush(stdin);
+            getString("\nError! debe ser Alfanumerica\nIngrese Patente:",patenteAux);
+        }
+        fflush(stdin);
+        strcpy(vehiculos[indiceAux].patente,patenteAux);
+
+        vehiculos[indiceAux].fechaIngreso.dia=getValidInt("\nIngrese dia de ingreso:","\nError debe ser entre 1-30",1,30);
+        vehiculos[indiceAux].fechaIngreso.mes=getValidInt("\nIngrese mes de ingreso:","\nError debe ser entre 1-12",1,12);
+        vehiculos[indiceAux].fechaIngreso.anio=getValidInt("\nIngrese anio de ingreso:","\nError debe ser entre 1850-2001",1850,2001);
+
+        vehiculos[indiceAux].horaIngreso=getValidInt("\nIngrese Hora de Ingreso:","\nError deber 1-24",1,24);
+
+        mostrarPersonas(personas,tamPersonas);
+        idAux=getInt("\nIngrese ID:");
+/*
+        while(personas[buscarPersonaPorID(personas,tamPersonas,idAux)].estado==0 || esNumerico(idAux)!=1)
+        {
+            system("cls");
+            mostrarPersonas(personas,tamPersonas);
+            idAux=getInt("\nError!\nIngrese ID:");
+        }
+        vehiculos[indiceAux].idDuenio=idAux;
+    }
+*/
 }

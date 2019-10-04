@@ -21,3 +21,25 @@
 1570125302 source:c:\users\alumno\desktop\lab1-master\estacionamiento\persona.c
 	"persona.h"
 
+1570155290 source:c:\users\ezequiel\desktop\dasdadasd\lab1-master\estacionamiento\main.c
+	"persona.h"
+	"utn.h"
+
+1570153722 c:\users\ezequiel\desktop\dasdadasd\lab1-master\estacionamiento\persona.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1570115747 c:\users\ezequiel\desktop\dasdadasd\lab1-master\estacionamiento\utn.h
+
+1570155103 source:c:\users\ezequiel\desktop\dasdadasd\lab1-master\estacionamiento\persona.c
+	"persona.h"
+	"utn.h"
+
+1570146740 source:c:\users\ezequiel\desktop\dasdadasd\lab1-master\estacionamiento\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"utn.h"
+

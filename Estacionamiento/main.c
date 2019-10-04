@@ -1,6 +1,7 @@
 #include "persona.h"
-#define MAXPERSONA 4
-#define MAXVEHICULOS 4
+#include "utn.h"
+#define MAXPERSONA 5
+#define MAXVEHICULOS 15
 /*
 Estructuras a utilizar:
 ePropietario
@@ -44,12 +45,12 @@ int main()
     ePersona newPersona[MAXPERSONA];
     eVehiculo newVehiculo[MAXVEHICULOS];
     inicializarPersonas(newPersona,MAXPERSONA);
-
-    hardcodePersonas(newPersona,MAXPERSONA);
+    inicializarVehiculos(newVehiculo,MAXVEHICULOS);
+    hardcodePersonas(newPersona,4);
 
     //mostrarPersonas(newPersona,MAXPERSONA);
 
-    hardcodeVehiculos(newVehiculo,MAXVEHICULOS);
+    hardcodeVehiculos(newVehiculo,4);
 
     //mostrarVehiculos(newVehiculo,MAXVEHICULOS,newPersona,MAXPERSONA);
 
@@ -60,22 +61,32 @@ int main()
         {
             case 1:
                 system("cls");
-                mostrarPersonasConVehiculos(newPersona,MAXPERSONA,newVehiculo,MAXVEHICULOS);
+                altaPropietario(newPersona,MAXPERSONA);
+                //
                 break;
             case 2:
-                //system("cls");
+                system("cls");
+                mostrarPersonasConVehiculos(newPersona,MAXPERSONA,newVehiculo,MAXVEHICULOS);
+                bajaPersona(newPersona,MAXPERSONA);
+                /*
                 ordenarPorNombre(newPersona,MAXPERSONA);
                 mostrarPersonasConVehiculos(newPersona,MAXPERSONA,newVehiculo,MAXVEHICULOS);
+                */
+
                 system("pause");
                 system("cls");
                 break;
             case 3:
                 system("cls");
-                mostrarVehiculos(newVehiculo,MAXVEHICULOS,newPersona,MAXPERSONA);
+                mostrarPersonasConVehiculos(newPersona,MAXPERSONA,newVehiculo,MAXVEHICULOS);
+                //mostrarVehiculos(newVehiculo,MAXVEHICULOS,newPersona,MAXPERSONA);
+                modificarPersona(newPersona,MAXPERSONA);
                 break;
             case 4:
-                ordenarPorPatente(newVehiculo,MAXVEHICULOS,newPersona,MAXPERSONA);
-                mostrarVehiculos(newVehiculo,MAXVEHICULOS,newPersona,MAXPERSONA);
+                //ordenarPorPatente(newVehiculo,MAXVEHICULOS,newPersona,MAXPERSONA);
+                //mostrarVehiculos(newVehiculo,MAXVEHICULOS,newPersona,MAXPERSONA);
+                system("cls");
+                altaVehiculo(newVehiculo,MAXVEHICULOS,newPersona,MAXPERSONA);
                 system("pause");
                 system("cls");
                 break;
@@ -87,10 +98,14 @@ int main()
                 mostrarVehiculosPorID(newVehiculo,MAXVEHICULOS,idAux);
                 break;
             case 6:
-                calcularEstadia(newVehiculo,MAXVEHICULOS);
+                system("cls");
+                menuInformes(newPersona,MAXPERSONA,newVehiculo,MAXVEHICULOS);
+                //calcularEstadia(newVehiculo,MAXVEHICULOS);
                 break;
             default:
-                printf("\nIngrese una opcion de 1-6");
+                system("cls");
+                printf("\nError, ingrese 1-6\n");
+                system("pause");
 
         }
 
@@ -106,7 +121,7 @@ int main()
 
 
     //PRUEBA DE PATENTE
-    //mostrarVehiculo(newVehiculo[buscarPorPatente(newVehiculo,MAXVEHICULOS,patente)],newPersona,MAXPERSONA);
+//    mostrarVehiculo(newVehiculo[buscarPorPatente(newVehiculo,MAXVEHICULOS,patente)],newPersona,MAXPERSONA);
 
     //Ordenar por año
     return 0;
