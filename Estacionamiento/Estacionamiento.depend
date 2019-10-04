@@ -10,16 +10,18 @@
 1569509194 source:c:\users\alumno\desktop\estacionamiento\persona.c
 	"persona.h"
 
-1570126157 source:c:\users\alumno\desktop\lab1-master\estacionamiento\main.c
+1570192093 source:c:\users\alumno\desktop\lab1-master\estacionamiento\main.c
 	"persona.h"
+	"utn.h"
 
-1570126157 c:\users\alumno\desktop\lab1-master\estacionamiento\persona.h
+1570192026 c:\users\alumno\desktop\lab1-master\estacionamiento\persona.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 
-1570125302 source:c:\users\alumno\desktop\lab1-master\estacionamiento\persona.c
+1570192566 source:c:\users\alumno\desktop\lab1-master\estacionamiento\persona.c
 	"persona.h"
+	"utn.h"
 
 1570155290 source:c:\users\ezequiel\desktop\dasdadasd\lab1-master\estacionamiento\main.c
 	"persona.h"
@@ -37,6 +39,15 @@
 	"utn.h"
 
 1570146740 source:c:\users\ezequiel\desktop\dasdadasd\lab1-master\estacionamiento\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"utn.h"
+
+1570190442 c:\users\alumno\desktop\lab1-master\estacionamiento\utn.h
+
+1570192737 source:c:\users\alumno\desktop\lab1-master\estacionamiento\utn.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>

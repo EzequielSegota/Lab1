@@ -92,10 +92,12 @@ int main()
                 break;
             case 5:
                 system("cls");
-                mostrarPersonas(newPersona,MAXPERSONA);
+                mostrarVehiculos(newVehiculo,MAXVEHICULOS,newPersona,MAXPERSONA);
+                bajaVehiculo(newVehiculo,MAXVEHICULOS,newPersona,MAXPERSONA);
+                /*mostrarPersonas(newPersona,MAXPERSONA);
                 printf("\nIngrese un duenio(ID):");
                 scanf("%d",&idAux);
-                mostrarVehiculosPorID(newVehiculo,MAXVEHICULOS,idAux);
+                mostrarVehiculosPorID(newVehiculo,MAXVEHICULOS,idAux);*/
                 break;
             case 6:
                 system("cls");

@@ -181,7 +181,8 @@ int esTelefono(char str[])
 void getString(char mensaje[],char input[])
 {
     printf("%s",mensaje);
-    scanf ("%s", input);
+    fflush(stdin);
+    gets(input);
 }
 
 /**

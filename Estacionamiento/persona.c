@@ -409,10 +409,8 @@ void altaVehiculo(eVehiculo vehiculos[] ,int tamVehiculos,ePersona personas[],in
         while(esAlfaNumerico(patenteAux)!=1)
         {
             system("cls");
-            fflush(stdin);
             getString("\nError! debe ser Alfanumerica\nIngrese Patente:",patenteAux);
         }
-        fflush(stdin);
         strcpy(vehiculos[indiceAux].patente,patenteAux);
 
         vehiculos[indiceAux].fechaIngreso.dia=getValidInt("\nIngrese dia de ingreso:","\nError debe ser entre 1-30",1,30);
@@ -423,8 +421,7 @@ void altaVehiculo(eVehiculo vehiculos[] ,int tamVehiculos,ePersona personas[],in
 
         mostrarPersonas(personas,tamPersonas);
         idAux=getInt("\nIngrese ID:");
-/*
-        while(personas[buscarPersonaPorID(personas,tamPersonas,idAux)].estado==0 || esNumerico(idAux)!=1)
+        while(personas[buscarPersonaPorID(personas,tamPersonas,idAux)].estado==0)
         {
             system("cls");
             mostrarPersonas(personas,tamPersonas);
@@ -432,5 +429,35 @@ void altaVehiculo(eVehiculo vehiculos[] ,int tamVehiculos,ePersona personas[],in
         }
         vehiculos[indiceAux].idDuenio=idAux;
     }
-*/
+    else
+        printf("\nNo hay lugar");
+
+}
+
+void bajaVehiculo(eVehiculo vehiculos[],int tamVehiculos,ePersona persona[],int tamPersonas)
+{
+    char patenteAux[256],confirmacion='n';
+    int indiceAux,horaAux;
+
+    do{
+        getString("\nIngrese una patente:",patenteAux);
+    }while(esAlfaNumerico(patenteAux)==0);
+
+    indiceAux=buscarPorPatente(vehiculos,tamVehiculos,patenteAux);
+    printf("EL Index:%d");
+    if(vehiculos[indiceAux].idDuenio!=0)
+    {
+        system("cls");
+        mostrarVehiculo(vehiculos[indiceAux],persona,tamPersonas);
+        confirmacion=toupper(confirmacion=getChar("\nEsta seguro que desea borrar este vehiculo(S/N):"));
+        if(confirmacion=='S')
+        {
+            horaAux=getValidInt("\nIngrese hora de Egreso:","\nError debe ser entre 1-24",1,24);
+            vehiculos[indiceAux].idDuenio=0;
+
+        }
+        else
+            printf("\nAdios!");
+    }
+
 }

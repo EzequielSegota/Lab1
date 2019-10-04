@@ -81,4 +81,6 @@ void altaVehiculo(eVehiculo*,int,ePersona*,int);
 void inicializarVehiculos(eVehiculo*,int);
 
 int buscarLibreVehiculo(eVehiculo*,int);
+
+void bajaVehiculo(eVehiculo*,int,ePersona*,int);
 #endif // PERSONA_H_INCLUDED
