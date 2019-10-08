@@ -54,7 +54,6 @@ int main()
 
     //mostrarVehiculos(newVehiculo,MAXVEHICULOS,newPersona,MAXPERSONA);
 
-    int idAux;
     char respuesta='s';
     do{
         switch(menuPrincipal())

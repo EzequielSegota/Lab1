@@ -21,7 +21,10 @@ void hardcodePersonas(ePersona newPersona[],int cant)
 
 void mostrarPersona(ePersona newPersona)
 {
-    printf("\n|Fecha(dd/mm/aaaa)\t|Nombre\t|ID|\n|%d/%d/%d|\t\t|%s\t|%d|",newPersona.fechaNac.dia,newPersona.fechaNac.mes,newPersona.fechaNac.anio,newPersona.nombre,newPersona.id);
+    if(strlen(newPersona.nombre)>=7)
+        printf("\n|Fecha(dd/mm/aaaa)\t|Nombre\t|ID|\n|%d/%d/%d|\t\t|%s|%d|",newPersona.fechaNac.dia,newPersona.fechaNac.mes,newPersona.fechaNac.anio,newPersona.nombre,newPersona.id);
+    else
+        printf("\n|Fecha(dd/mm/aaaa)\t|Nombre\t|ID|\n|%d/%d/%d|\t\t|%s\t|%d|",newPersona.fechaNac.dia,newPersona.fechaNac.mes,newPersona.fechaNac.anio,newPersona.nombre,newPersona.id);
 }
 
 void mostrarPersonas(ePersona newPersona[],int cant)
@@ -66,7 +69,11 @@ void mostrarVehiculo(eVehiculo vehiculos,ePersona duenio[],int cant)
     if(duenio[indiceAux].estado==1)
     {
         printf("\n\nAutos:");
-        printf("\n|Patente\t|Fecha de Ingreso(dd/mm/aaaa)\t|Hora de ingreso\t|Hora de salida|\n|%s|\t|%d/%d/%d|\t\t\t|%d|\t\t\t\t|%d|",vehiculos.patente,vehiculos.fechaIngreso.dia,vehiculos.fechaIngreso.mes,vehiculos.fechaIngreso.anio,vehiculos.horaIngreso,vehiculos.horaSalida);
+        if(strlen(vehiculos.patente)<6)
+            printf("\n|Patente\t|Fecha de Ingreso(dd/mm/aaaa)\t|Hora de ingreso\t|Hora de salida|\n|%s|\t\t|%d/%d/%d|\t\t\t|%d|\t\t\t\t|%d|",vehiculos.patente,vehiculos.fechaIngreso.dia,vehiculos.fechaIngreso.mes,vehiculos.fechaIngreso.anio,vehiculos.horaIngreso,vehiculos.horaSalida);
+        else
+            printf("\n|Patente\t|Fecha de Ingreso(dd/mm/aaaa)\t|Hora de ingreso\t|Hora de salida|\n|%s|\t|%d/%d/%d|\t\t\t|%d|\t\t\t\t|%d|",vehiculos.patente,vehiculos.fechaIngreso.dia,vehiculos.fechaIngreso.mes,vehiculos.fechaIngreso.anio,vehiculos.horaIngreso,vehiculos.horaSalida);
+
         printf("\n\nDuenio:");
         mostrarPersona(duenio[indiceAux]);
     }
@@ -222,8 +229,10 @@ void mostrarVehiculosPorID(eVehiculo vehiculos[],int tamVehiculos,int id)
 
 void mostrarVehiculosSinDuenio(eVehiculo vehiculos)
 {
-
-        printf("\n|Patente\t|Fecha de Ingreso(dd/mm/aaaa)\t|Hora de ingreso\t|Hora de salida\n|%s\t|%d/%d/%d\t\t\t|%d\t\t\t|%d|",vehiculos.patente,vehiculos.fechaIngreso.dia,vehiculos.fechaIngreso.mes,vehiculos.fechaIngreso.anio,vehiculos.horaIngreso,vehiculos.horaSalida);
+        if(strlen(vehiculos.patente)<6)
+            printf("\n|Patente\t|Fecha de Ingreso(dd/mm/aaaa)\t|Hora de ingreso\t|Hora de salida\n|%s\t\t|%d/%d/%d\t\t\t|%d\t\t\t|%d|",vehiculos.patente,vehiculos.fechaIngreso.dia,vehiculos.fechaIngreso.mes,vehiculos.fechaIngreso.anio,vehiculos.horaIngreso,vehiculos.horaSalida);
+        else
+            printf("\n|Patente\t|Fecha de Ingreso(dd/mm/aaaa)\t|Hora de ingreso\t|Hora de salida\n|%s\t|%d/%d/%d\t\t\t|%d\t\t\t|%d|",vehiculos.patente,vehiculos.fechaIngreso.dia,vehiculos.fechaIngreso.mes,vehiculos.fechaIngreso.anio,vehiculos.horaIngreso,vehiculos.horaSalida);
 }
 
 void mostrarPersonasConVehiculos(ePersona newPersona[],int cant,eVehiculo vehiculos[],int tamVehiculos)
@@ -233,7 +242,10 @@ void mostrarPersonasConVehiculos(ePersona newPersona[],int cant,eVehiculo vehicu
     {
         if(newPersona[i].estado==1)
         {
-            printf("\n|Fecha(dd/mm/aaaa)\t|Nombre\t|ID|\n|%d/%d/%d\t\t|%s\t|%d|",newPersona[i].fechaNac.dia,newPersona[i].fechaNac.mes,newPersona[i].fechaNac.anio,newPersona[i].nombre,newPersona[i].id);
+            if(strlen(newPersona[i].nombre)>=7)
+                printf("\n|Fecha(dd/mm/aaaa)\t|Nombre\t|ID|\n|%d/%d/%d\t\t|%s|%d|",newPersona[i].fechaNac.dia,newPersona[i].fechaNac.mes,newPersona[i].fechaNac.anio,newPersona[i].nombre,newPersona[i].id);
+            else
+                printf("\n|Fecha(dd/mm/aaaa)\t|Nombre\t|ID|\n|%d/%d/%d\t\t|%s\t|%d|",newPersona[i].fechaNac.dia,newPersona[i].fechaNac.mes,newPersona[i].fechaNac.anio,newPersona[i].nombre,newPersona[i].id);
             printf("\nAutos:\n");
             mostrarVehiculosPorID(vehiculos,tamVehiculos,newPersona[i].id);
             printf("\n");
@@ -248,9 +260,12 @@ void calcularEstadia(eVehiculo vehiculos[],int tamVehiculos)
     int acumulador;
     for(i=0;i<tamVehiculos;i++)
     {
-        acumulador=vehiculos[i].horaSalida-vehiculos[i].horaIngreso;
-        mostrarVehiculosSinDuenio(vehiculos[i]);
-        printf("\n\nHoras que Estuvo:%d\t|Debe pagar:%d\n\n",acumulador,acumulador*100);
+        if(vehiculos[i].idDuenio!=0)
+        {
+            acumulador=vehiculos[i].horaSalida-vehiculos[i].horaIngreso;
+            mostrarVehiculosSinDuenio(vehiculos[i]);
+            printf("\n\nHoras que Estuvo:%d\t|Debe pagar:%d\n\n",acumulador,acumulador*100);
+        }
     }
 }
 
@@ -359,20 +374,73 @@ int menuModificarPersona()
     return opcion;
 }
 
-int menuInformes(ePersona personas[] ,int tamPersonas,eVehiculo vehiculos[] ,int tamVehiculos)
+void menuInformes(ePersona personas[] ,int tamPersonas,eVehiculo vehiculos[] ,int tamVehiculos)
 {
-    int opcion;
-    printf("\n1.Mostrar Propietario");
-    printf("\n2.Ordenar Propietario");
-    printf("\n3.Mostrar Vehiculos");
-    printf("\n4.Ordenar Vehiculos");
-    printf("\n5.Mostrar Vehiculos de un dueño.");
-    printf("\n6.Mostrar Coste de Estadia.");
+    int opcion,idAux,indiceAux;
+    do{
+        printf("\n1.Mostrar Propietario");
+        printf("\n2.Ordenar Propietario");
+        printf("\n3.Mostrar Vehiculos");
+        printf("\n4.Ordenar Vehiculos");
+        printf("\n5.Mostrar Vehiculos de un dueño.");
+        printf("\n6.Mostrar Coste de Estadia.");
+        printf("\n7.Mostrar duenio con mas autos.");
+        printf("\n9.Salir.");
+        opcion=getInt("\nIngrese opcion:");
 
-    printf("\nIngrese una opcion(1-6):");
-    scanf("%d",&opcion);
+        switch(opcion)
+        {
+            case 1:
+                system("cls");
+                mostrarPersonas(personas,tamPersonas);
+                printf("\n");
+                system("pause");
+                break;
+            case 2:
+                system("cls");
+                ordenarPorNombre(personas,tamPersonas);
+                mostrarPersonas(personas,tamPersonas);
+                system("pause");
+                break;
+            case 3:
+                system("cls");
+                mostrarVehiculos(vehiculos,tamVehiculos,personas,tamPersonas);
+                system("pause");
+                break;
+            case 4:
+                system("cls");
+                ordenarPorPatente(vehiculos,tamVehiculos,personas,tamPersonas);
+                mostrarVehiculos(vehiculos,tamVehiculos,personas,tamPersonas);
+                system("pause");
+                break;
+            case 5:
+                system("cls");
+                mostrarPersonas(personas,tamPersonas);
+                idAux=getInt("\nIngrese un ID:");
+                mostrarVehiculosPorID(vehiculos,tamVehiculos,idAux);
+                system("pause");
+                break;
+            case 6:
+                system("cls");
+                calcularEstadia(vehiculos,tamVehiculos);
+                system("pause");
+                break;
+            case 7:
+                system("cls");
+                indiceAux=duenioConMasAutos(personas,tamPersonas,vehiculos,tamVehiculos);
+                printf("\nLa Persona con mas autos es:\n");
+                mostrarPersona(personas[indiceAux]);
+                system("pause");
+                break;
+            default:
+                printf("\nError, ingrese opcion valida...");
 
-    return opcion;
+        }
+
+
+    }while(opcion!=9);
+
+
 }
 
 void inicializarVehiculos(eVehiculo vehiculo[],int tamVehiculos)
@@ -381,6 +449,7 @@ void inicializarVehiculos(eVehiculo vehiculo[],int tamVehiculos)
     for(i=0;i<tamVehiculos;i++)
     {
         vehiculo[i].idDuenio=0;
+        vehiculo[i].horaSalida=0;
     }
 }
 
@@ -444,7 +513,6 @@ void bajaVehiculo(eVehiculo vehiculos[],int tamVehiculos,ePersona persona[],int 
     }while(esAlfaNumerico(patenteAux)==0);
 
     indiceAux=buscarPorPatente(vehiculos,tamVehiculos,patenteAux);
-    printf("EL Index:%d");
     if(vehiculos[indiceAux].idDuenio!=0)
     {
         system("cls");
@@ -460,4 +528,27 @@ void bajaVehiculo(eVehiculo vehiculos[],int tamVehiculos,ePersona persona[],int 
             printf("\nAdios!");
     }
 
+}
+
+int duenioConMasAutos(ePersona personas[],int tamPersonas,eVehiculo vehiculos[],int tamVehiculos)
+{
+    int i,j,cantidadVehiculos=0,cantidadVehiculosAnterior=0,indice=-1;
+    for(i=0;i<tamPersonas;i++)
+    {
+        for(j=0;j<tamVehiculos;j++)
+        {
+            if(vehiculos[j].idDuenio==(i+1))
+            {
+                cantidadVehiculos++;
+            }
+        }
+        if(cantidadVehiculos>cantidadVehiculosAnterior)
+        {
+            indice=i;
+            cantidadVehiculosAnterior=cantidadVehiculos;
+        }
+        cantidadVehiculos=0;
+    }
+
+    return indice;
 }

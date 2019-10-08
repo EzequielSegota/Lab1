@@ -23,22 +23,22 @@
 	"persona.h"
 	"utn.h"
 
-1570155290 source:c:\users\ezequiel\desktop\dasdadasd\lab1-master\estacionamiento\main.c
+1570565346 source:c:\users\ezequiel\desktop\dasdadasd\lab1-master\estacionamiento\main.c
 	"persona.h"
 	"utn.h"
 
-1570153722 c:\users\ezequiel\desktop\dasdadasd\lab1-master\estacionamiento\persona.h
+1570568795 c:\users\ezequiel\desktop\dasdadasd\lab1-master\estacionamiento\persona.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 
-1570115747 c:\users\ezequiel\desktop\dasdadasd\lab1-master\estacionamiento\utn.h
+1570195497 c:\users\ezequiel\desktop\dasdadasd\lab1-master\estacionamiento\utn.h
 
-1570155103 source:c:\users\ezequiel\desktop\dasdadasd\lab1-master\estacionamiento\persona.c
+1570569518 source:c:\users\ezequiel\desktop\dasdadasd\lab1-master\estacionamiento\persona.c
 	"persona.h"
 	"utn.h"
 
-1570146740 source:c:\users\ezequiel\desktop\dasdadasd\lab1-master\estacionamiento\utn.c
+1570195497 source:c:\users\ezequiel\desktop\dasdadasd\lab1-master\estacionamiento\utn.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>

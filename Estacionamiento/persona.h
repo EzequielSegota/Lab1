@@ -62,7 +62,7 @@ void altaPropietario(ePersona*, int);
 
 void mostrarVehiculosSinDuenio(eVehiculo);
 
-int menuInformes(ePersona*,int,eVehiculo*,int);
+void menuInformes(ePersona*,int,eVehiculo*,int);
 
 void mostrarVehiculosPorID(eVehiculo*,int,int);
 
@@ -83,4 +83,6 @@ void inicializarVehiculos(eVehiculo*,int);
 int buscarLibreVehiculo(eVehiculo*,int);
 
 void bajaVehiculo(eVehiculo*,int,ePersona*,int);
+
+int duenioConMasAutos(ePersona*,int,eVehiculo*,int);
 #endif // PERSONA_H_INCLUDED
