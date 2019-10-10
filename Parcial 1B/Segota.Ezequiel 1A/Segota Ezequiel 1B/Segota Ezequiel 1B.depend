@@ -1,0 +1,59 @@
+# depslib dependency file v1.0
+1570709737 source:c:\users\alumno\desktop\segota ezequiel 1b\jugadores.c
+	"equipo.h"
+	"referi.h"
+	"jugadores.h"
+	"utn.h"
+
+1570712268 c:\users\alumno\desktop\segota ezequiel 1b\equipo.h
+	"referi.h"
+	"jugadores.h"
+	<stdio.h>
+	<stdlib.h>
+
+1570710807 c:\users\alumno\desktop\segota ezequiel 1b\referi.h
+	"equipo.h"
+	"jugadores.h"
+	<stdio.h>
+	<stdlib.h>
+
+1570710807 c:\users\alumno\desktop\segota ezequiel 1b\jugadores.h
+	"equipo.h"
+	"referi.h"
+	<stdio.h>
+	<stdlib.h>
+
+1570708430 c:\users\alumno\desktop\segota ezequiel 1b\utn.h
+
+1570712298 source:c:\users\alumno\desktop\segota ezequiel 1b\main.c
+	<stdio.h>
+	<stdlib.h>
+	"utn.h"
+	"referi.h"
+	"equipo.h"
+	"jugadores.h"
+	"partido.h"
+
+1570709246 c:\users\alumno\desktop\segota ezequiel 1b\partido.h
+
+1570709193 source:c:\users\alumno\desktop\segota ezequiel 1b\partido.c
+
+1570709737 source:c:\users\alumno\desktop\segota ezequiel 1b\referi.c
+	"equipo.h"
+	"referi.h"
+	"jugadores.h"
+	"utn.h"
+
+1570708430 source:c:\users\alumno\desktop\segota ezequiel 1b\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"utn.h"
+
+1570712287 source:c:\users\alumno\desktop\segota ezequiel 1b\equipo.c
+	"equipo.h"
+	"referi.h"
+	"jugadores.h"
+	"utn.h"
+
