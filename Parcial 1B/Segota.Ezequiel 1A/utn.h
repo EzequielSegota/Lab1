@@ -202,6 +202,8 @@ int getValidIntOpcion(char requestMessage[],char errorMessage[], int comparacion
  */
 void cleanStdin(void);
 
+int getValidEmail(char requestMessage[],char errorMessage[],char input[],int limit);
+
 float getValidFloatMayor0(char requestMessage[],char errorMessage[]);
 
 int getStringLetrasRangoDireccion(char mensaje[],char input[], int tamanio);

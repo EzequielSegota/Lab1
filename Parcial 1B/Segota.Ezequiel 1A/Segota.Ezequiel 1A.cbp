@@ -31,21 +31,25 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="alquileres.c">
+		<Unit filename="equipos.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="alquileres.h" />
-		<Unit filename="clientes.c">
+		<Unit filename="equipos.h" />
+		<Unit filename="jugadores.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="clientes.h" />
-		<Unit filename="juegos.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="juegos.h" />
+		<Unit filename="jugadores.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="partidos.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="partidos.h" />
+		<Unit filename="referi.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="referi.h" />
 		<Unit filename="utn.c">
 			<Option compilerVar="CC" />
 		</Unit>

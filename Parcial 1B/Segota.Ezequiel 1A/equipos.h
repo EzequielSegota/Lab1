@@ -2,11 +2,16 @@
 #define JUEGOS_H_INCLUDED
 typedef struct
 {
+    int dia;
+    int mes;
+    int anio;
+} eFecha;
+typedef struct
+{
     int idEquipo;
     char nombre[51];
     char localidad[33];
     int isEmpty;
-
 } eEquipo;
 
 int menu();

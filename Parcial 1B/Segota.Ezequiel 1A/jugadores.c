@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include "jugadores.h"
-#include "equipos.h"
 #include "utn.h"
 #define ACTIVO 0
 #define VACIO 1
@@ -32,7 +31,7 @@ void hardcodeoJugadores(eJugadores jugadores[])
     int mes[]={ 1,3,5,7,8,10,12,5,4,6,3,1, 1,3,5,7,8,10,12,5,4,6,3,1, 1,3,5,7,8,10,12,5,4,6,3,1, 1,3,5,7,8,10,12,5,4,6,3,1, 1,3,5,7,8,10,12,5,4,6,3,1, 1,3,5,7,8,10,12,5,4,6,3,1, 1,3,5,7,8,10,12,5,4,6,3,1, 1,3,5,7,8,10,12,5,4,6,3,1, 1,3,5,7,8,10,12,5,4,6,3,1, 1,3,5,7,8,10,12,5,4,6,3,1, 1,3,5,7,8,10,12,5,4,6,3,1, 1,3,5,7,8,10,12,5,4,6,3,1};
     int dia[]= { 25,30,29,10,1,5,4,2,8,18,19,6,11,22,25,30,29,10,1,5,4,2,8,18,19,6,11,22,25,30,29,10,1,5,4,2,8,18,19,6,11,22,25,30,29,10,1,5,4,2,8,18,19,6,11,22,25,30,29,10,1,5,4,2,8,18,19,6,11,22,25,30,29,10,1,5,4,2,8,18,19,6,11,22,25,30,29,10,1,5,4,2,8,18,19,6,11,22,25,30,29,10,1,5,4,2,8,18,19,6,11,22,25,30,29,10,1,5,4,2,8,18,19,6,11,22,25,30,29,10,1,5,4,2,8,18,19,6,11,22};
 
-    for(int i=0;i<35;i++)
+    for(int i=0;i<50;i++)
     {
         jugadores[i].idJugador=i+1;
         jugadores[i].fechaNac.dia=dia[i];
@@ -124,6 +123,7 @@ int buscarJugador(eJugadores jugadores[], int tamanioJugadores, int idJugador)
 void abmJugadores(eEquipo equipos[], int tamanioEquipos, eJugadores jugadores[], int tamanioJugadores)
 {
     char seguir = 's'; //Bandera continuar do-while.
+    char seguirDos = 's';
     do
     {
         switch(menuABM())
@@ -141,7 +141,34 @@ void abmJugadores(eEquipo equipos[], int tamanioEquipos, eJugadores jugadores[],
             system("pause");
             break;
         case 4:
-            listarJugadores(jugadores,tamanioJugadores,equipos,tamanioEquipos);
+            do
+            {
+                switch(menuListadosJugadores())
+                {
+                    case 1:
+                        mostrarJugadores(jugadores,tamanioJugadores,equipos,tamanioEquipos);
+                        system("pause");
+                        break;
+                    case 2:
+                        listarJugadores(jugadores,tamanioJugadores,equipos,tamanioEquipos);
+                        system("pause");
+                        break;
+                    case 3:
+                        listarJugadoresPorEquipo(jugadores,tamanioJugadores,equipos,tamanioEquipos);
+                        system("pause");
+                        break;
+                    case 5:
+                        system("cls");
+                        seguirDos='n';
+                        printf("\nAdios");
+                    default:
+                        printf("\nError\n");
+
+
+                }
+            }while(seguirDos=='s');
+
+            //listarJugadores(jugadores,tamanioJugadores,equipos,tamanioEquipos);
             system("pause");
             break;
         case 5:
@@ -459,6 +486,41 @@ void modificarJugador(eJugadores jugadores [], int tamanioJugadores,eEquipo equi
         }
     }
 
+}
+
+int menuListadosJugadores(void)
+{
+    int option;
+    system("cls");
+    printf("  1- Listar jugadores\n");
+    printf("  2- Listar jugadores ordenados alfabeticamente\n");
+    printf("  3- Listar jugadores por Equipo\n");
+    //printf("  4- \n");
+    printf("  5- Salir\n");
+    option = getInt("Ingrese opcion: ");
+    return option;
+}
+
+void listarJugadoresPorEquipo(eJugadores jugadores [], int tamanioJugadores,eEquipo equipos[], int tamanioEquipos)
+{
+    system("cls");
+    int idEquipoAux,indiceAux;
+    mostrarEquipos(equipos,tamanioEquipos);
+    do
+    {
+            idEquipoAux = getValidIntRango("\nIngrese equipo: ", "Error de ingreso. Reintente.\n\n", 1, tamanioEquipos);
+            indiceAux=buscarEquipo(equipos,tamanioEquipos,idEquipoAux);
+    }while(equipos[indiceAux].isEmpty!=ACTIVO);
+
+    printf("  *** Lista de Jugadores Por Equipo***\n");
+    printf("\n\tId  |           Nombre   |          Apellido  |  Sexo  | Fecha de Nacimiento  | Equipo\n\n");
+    for(int i=0; i<tamanioJugadores; i++)
+    {
+        if(jugadores[i].idEquipo==idEquipoAux && jugadores[i].isEmpty==ACTIVO)
+        {
+            mostrarJugador(jugadores[i],equipos,tamanioEquipos);
+        }
+    }
 }
 
 /*

@@ -3,7 +3,6 @@
 #include <string.h>
 #include "equipos.h"
 #include "utn.h"
-#include "jugadores.h"
 #define ACTIVO 0
 #define VACIO 1
 #define BAJA 2
@@ -35,6 +34,7 @@ int menuABM()
     option = getInt("Ingrese opcion: ");
     return option;
 }
+
 
 void hardcodeoEquipos(eEquipo equipos[])
 {

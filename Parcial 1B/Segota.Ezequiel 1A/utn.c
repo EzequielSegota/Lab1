@@ -373,3 +373,54 @@ float getValidFloatMayor0(char requestMessage[],char errorMessage[])
     auxFloat = atof(auxStr);
     return auxFloat;
 }
+
+int getValidEmail(char requestMessage[],char errorMessage[],char input[],int limit)
+{
+    int flagArroba=0,flagPunto=0,largo,i,retorno=-1;
+    printf("%s",requestMessage);
+    fflush(stdin);
+    scanf("%[^\n]s", input);
+    largo=strlen(input);
+    if(largo!=limit)
+    {
+        for(i=0;i<largo;i++)
+        {
+            if(input[i]=='@')
+            {
+                flagArroba++;
+            }
+
+            if(input[i]=='.')
+            {
+                flagPunto++;
+            }
+
+        }
+        retorno=1;
+    }
+
+    while(flagArroba==0 || (flagPunto>2 || flagPunto==0))
+    {
+        printf("%s",errorMessage);
+        fflush(stdin);
+        scanf("%[^\n]s", input);
+        largo=strlen(input);
+        if(largo!=limit)
+        {
+            for(i=0;i<largo;i++)
+            {
+                if(input[i]=='@')
+                {
+                    flagArroba++;
+                }
+
+                if(input[i]=='.')
+                {
+                    flagPunto++;
+                }
+            }
+        }
+    }
+
+    return retorno;
+}

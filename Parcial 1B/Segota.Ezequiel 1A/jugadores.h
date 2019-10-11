@@ -1,14 +1,6 @@
 #ifndef ALQUILERES_H_INCLUDED
 #define ALQUILERES_H_INCLUDED
 #include "equipos.h"
-#include "clientes.h"
-typedef struct
-{
-    int dia;
-    int mes;
-    int anio;
-} eFecha;
-
 typedef struct
 {
     int idJugador;
@@ -35,7 +27,8 @@ void cargarEquipo(eEquipo equipos[], int tamanioEquipos,int idEquipo,char cadena
 void modificarJugador(eJugadores jugadores [], int tamanioJugadores,eEquipo equipos[], int tamanioEquipos);
 //void cargarDescripcion(eJuego juegos[], int tamanioJuegos, int idJuego, char cadena[]);
 //int clientesActivos(eCliente clientes[], int tamanioClientes);
-
+void listarJugadoresPorEquipo(eJugadores jugadores [], int tamanioJugadores,eEquipo equipos[], int tamanioEquipos);
+int menuListadosJugadores(void);
 void abmJugadores(eEquipo equipos[], int tamanioEquipos,eJugadores jugadores[], int tamanioJugadores);
 
 #endif // ALQUILERES_H_INCLUDED

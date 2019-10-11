@@ -102,3 +102,96 @@
 	"clientes.h"
 	"utn.h"
 
+1570739829 source:c:\users\ezequiel\desktop\dasdadasd\lab1-master\parcial 1b\segota.ezequiel 1a\alquileres.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"jugadores.h"
+	"equipos.h"
+	"utn.h"
+
+1570739829 c:\users\ezequiel\desktop\dasdadasd\lab1-master\parcial 1b\segota.ezequiel 1a\alquileres.h
+	"equipos.h"
+	"clientes.h"
+
+1570739829 c:\users\ezequiel\desktop\dasdadasd\lab1-master\parcial 1b\segota.ezequiel 1a\juegos.h
+
+1570748432 c:\users\ezequiel\desktop\dasdadasd\lab1-master\parcial 1b\segota.ezequiel 1a\clientes.h
+	"jugadores.h"
+	"equipos.h"
+	"referi.h"
+
+1570742650 c:\users\ezequiel\desktop\dasdadasd\lab1-master\parcial 1b\segota.ezequiel 1a\utn.h
+
+1570748456 source:c:\users\ezequiel\desktop\dasdadasd\lab1-master\parcial 1b\segota.ezequiel 1a\clientes.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"clientes.h"
+	"utn.h"
+
+1570739829 source:c:\users\ezequiel\desktop\dasdadasd\lab1-master\parcial 1b\segota.ezequiel 1a\juegos.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"equipos.h"
+	"utn.h"
+	"jugadores.h"
+
+1570755749 source:c:\users\ezequiel\desktop\dasdadasd\lab1-master\parcial 1b\segota.ezequiel 1a\main.c
+	<stdio.h>
+	<stdlib.h>
+	"equipos.h"
+	"partidos.h"
+	"jugadores.h"
+	"referi.h"
+	"utn.h"
+
+1570743096 source:c:\users\ezequiel\desktop\dasdadasd\lab1-master\parcial 1b\segota.ezequiel 1a\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	<ctype.h>
+
+1570755420 c:\users\ezequiel\desktop\dasdadasd\lab1-master\parcial 1b\segota.ezequiel 1a\referi.h
+	"equipos.h"
+
+1570750105 source:c:\users\ezequiel\desktop\dasdadasd\lab1-master\parcial 1b\segota.ezequiel 1a\referi.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"referi.h"
+	"utn.h"
+
+1570758385 c:\users\ezequiel\desktop\dasdadasd\lab1-master\parcial 1b\segota.ezequiel 1a\jugadores.h
+	"equipos.h"
+
+1570753751 c:\users\ezequiel\desktop\dasdadasd\lab1-master\parcial 1b\segota.ezequiel 1a\equipos.h
+
+1570753751 source:c:\users\ezequiel\desktop\dasdadasd\lab1-master\parcial 1b\segota.ezequiel 1a\equipos.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"equipos.h"
+	"utn.h"
+
+1570758394 source:c:\users\ezequiel\desktop\dasdadasd\lab1-master\parcial 1b\segota.ezequiel 1a\jugadores.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"jugadores.h"
+	"utn.h"
+
+1570758385 c:\users\ezequiel\desktop\dasdadasd\lab1-master\parcial 1b\segota.ezequiel 1a\partidos.h
+	"equipos.h"
+	"referi.h"
+
+1570757785 source:c:\users\ezequiel\desktop\dasdadasd\lab1-master\parcial 1b\segota.ezequiel 1a\partidos.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"partidos.h"
+	"referi.h"
+	"utn.h"
+
