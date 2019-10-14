@@ -307,10 +307,35 @@ void listarEquipos(eEquipo equipos[], int tamanioEquipos)
     printf("\n");
 }
 
+void listarEquiposConNombreMasLargo(eEquipo equipos[],int tamanioEquipos)
+{
+    int i,maxActual=0,auxLargo;
+    for(i=0;i<tamanioEquipos;i++)
+    {
+        auxLargo=strlen(equipos[i].nombre);
+        if(auxLargo>maxActual && equipos[i].isEmpty==ACTIVO)
+        {
+            maxActual=auxLargo;
+        }
+    }
+
+    printf("\nLos/El equipos con nombre mas largo son/es:");
+    printf("\n\tId  |      Nombre     |    Localidad\n\n");
+    for(i=0;i<tamanioEquipos;i++)
+    {
+        auxLargo=strlen(equipos[i].nombre);
+        if(auxLargo==maxActual && equipos[i].isEmpty==ACTIVO)
+        {
+            mostrarEquipo(equipos[i]);
+        }
+    }
+}
 
 void abmEquipos(eEquipo equipos[], int tamanioEquipos)
 {
     char seguir = 's'; //Bandera continuar do-while.
+    char seguirDos = 's';
+
     do
     {
         switch(menuABM())
@@ -328,7 +353,26 @@ void abmEquipos(eEquipo equipos[], int tamanioEquipos)
             system("pause");
             break;
         case 4:
-            listarEquipos(equipos, tamanioEquipos);
+            do{
+                switch(menuListadoEquipos())
+                {
+                    case 1:
+                        listarEquipos(equipos, tamanioEquipos);
+                        system("pause");
+                        break;
+                    case 2:
+                        listarEquiposConNombreMasLargo(equipos,tamanioEquipos);
+                        system("pause");
+                        break;
+                    case 5:
+                        system("cls");
+                        seguirDos='n';
+                        printf("\nAdios");
+                        break;
+                    default:
+                        printf("\nError\n");
+                }
+            }while(seguirDos=='s');
             system("pause");
             break;
         case 5:
@@ -340,4 +384,17 @@ void abmEquipos(eEquipo equipos[], int tamanioEquipos)
         }
     }
     while(seguir == 's');
+}
+
+
+int menuListadoEquipos()
+{
+    int option;
+    system("cls");
+    printf("  1- Listar Equipos\n");
+    printf("  2- Listar el/los equipos con nombre mas largo\n");
+    //printf("  3- \n");
+    printf("  5- Salir\n");
+    option = getInt("Ingrese opcion: ");
+    return option;
 }

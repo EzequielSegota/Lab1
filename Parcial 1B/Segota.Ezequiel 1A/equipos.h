@@ -16,6 +16,8 @@ typedef struct
 
 int menu();
 int menuABM();
+int menuListadoEquipos();
+void listarEquiposConNombreMasLargo(eEquipo equipos[],int tamanioEquipos);
 void hardcodeoEquipos(eEquipo equipos[]);
 int getNextId(eEquipo equipos[],int tamanioEquipos);
 int iniciarEstadosEquipos(eEquipo equipos[], int tamanioEquipos);

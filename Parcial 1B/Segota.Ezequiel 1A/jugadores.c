@@ -6,6 +6,7 @@
 #define ACTIVO 0
 #define VACIO 1
 #define BAJA 2
+#define ANIO_ACTUAL 2019
 
 int getNextIdJugador(eJugadores jugadores[],int tamanioJugadores)
 {
@@ -23,7 +24,7 @@ int getNextIdJugador(eJugadores jugadores[],int tamanioJugadores)
 
 void hardcodeoJugadores(eJugadores jugadores[])
 {
-    char Nombres[][50]={"JUAN","JOSÉ LUIS","JOSÉ","MARÍA GUADALUPE","FRANCISCO","GUADALUPE","MARÍA","JUANA","ANTONIO","JESÚS","MIGUEL ÁNGEL","PEDRO","ALEJANDRO","MANUEL","MARGARITA","MARÍA DEL CARMEN","JUAN CARLOS","ROBERTO","FERNANDO","DANIEL","CARLOS","JORGE","RICARDO","MIGUEL","EDUARDO","JAVIER","RAFAEL","MARTÍN","RAÚL","DAVID","JOSEFINA","JOSÉ ANTONIO","ARTURO","MARCO ANTONIO","JOSÉ MANUEL","JUAN","JOSÉ LUIS","JOSÉ","MARÍA GUADALUPE","FRANCISCO","GUADALUPE","MARÍA","JUANA","ANTONIO","JESÚS","MIGUEL ÁNGEL","PEDRO","ALEJANDRO","MANUEL","MARGARITA","MARÍA DEL CARMEN","JUAN CARLOS","ROBERTO","FERNANDO","DANIEL","CARLOS","JORGE","RICARDO","MIGUEL","EDUARDO","JAVIER","RAFAEL","MARTÍN","RAÚL","DAVID","JOSEFINA","JOSÉ ANTONIO","ARTURO","MARCO ANTONIO","JOSÉ MANUEL","JUAN","JOSÉ LUIS","JOSÉ","MARÍA GUADALUPE","FRANCISCO","GUADALUPE","MARÍA","JUANA","ANTONIO","JESÚS","MIGUEL ÁNGEL","PEDRO","ALEJANDRO","MANUEL","MARGARITA","MARÍA DEL CARMEN","JUAN CARLOS","ROBERTO","FERNANDO","DANIEL","CARLOS","JORGE","RICARDO","MIGUEL","EDUARDO","JAVIER","RAFAEL","MARTÍN","RAÚL","DAVID","JOSEFINA","JOSÉ ANTONIO","ARTURO","MARCO ANTONIO","JOSÉ MANUEL","JUAN","JOSÉ LUIS","JOSÉ","MARÍA GUADALUPE","FRANCISCO","GUADALUPE","MARÍA","JUANA","ANTONIO","JESÚS","MIGUEL ÁNGEL","PEDRO","ALEJANDRO","MANUEL","MARGARITA","MARÍA DEL CARMEN","JUAN CARLOS","ROBERTO","FERNANDO","DANIEL","CARLOS","JORGE","RICARDO","MIGUEL","EDUARDO","JAVIER","RAFAEL","MARTÍN","RAÚL","DAVID","JOSEFINA","JOSÉ ANTONIO","ARTURO","MARCO ANTONIO","JOSÉ MANUEL","JUAN","JOSÉ LUIS","JOSÉ","MARÍA GUADALUPE","FRANCISCO","GUADALUPE","MARÍA","JUANA","ANTONIO","JESÚS","MIGUEL ÁNGEL","PEDRO","ALEJANDRO","MANUEL","MARGARITA","MARÍA DEL CARMEN","JUAN CARLOS","ROBERTO","FERNANDO","DANIEL","CARLOS","JORGE","RICARDO","MIGUEL","EDUARDO","JAVIER","RAFAEL","MARTÍN","RAÚL","DAVID","JOSEFINA","JOSÉ ANTONIO","ARTURO","MARCO ANTONIO","JOSÉ MANUEL","JUAN","JOSÉ LUIS","JOSÉ","MARÍA GUADALUPE","FRANCISCO","GUADALUPE","MARÍA","JUANA","ANTONIO","JESÚS","MIGUEL ÁNGEL","PEDRO","ALEJANDRO","MANUEL","MARGARITA","MARÍA DEL CARMEN","JUAN CARLOS","ROBERTO","FERNANDO","DANIEL","CARLOS","JORGE","RICARDO","MIGUEL","EDUARDO","JAVIER","RAFAEL","MARTÍN","RAÚL","DAVID","JOSEFINA","JOSÉ ANTONIO","ARTURO","MARCO ANTONIO","JOSÉ MANUEL","JUAN","JOSÉ LUIS","JOSÉ","MARÍA GUADALUPE","FRANCISCO","GUADALUPE","MARÍA","JUANA","ANTONIO","JESÚS","MIGUEL ÁNGEL","PEDRO","ALEJANDRO","MANUEL","MARGARITA","MARÍA DEL CARMEN","JUAN CARLOS","ROBERTO","FERNANDO","DANIEL","CARLOS","JORGE","RICARDO","MIGUEL","EDUARDO","JAVIER","RAFAEL","MARTÍN","RAÚL","DAVID","JOSEFINA","JOSÉ ANTONIO","ARTURO","MARCO ANTONIO","JOSÉ MANUEL"};
+    char Nombres[][50]={"JUAN","JOSE LUIS","JOSE","MARIA GUADALUPE","FRANCISCO","GUADALUPE","MARIA","JUANA","ANTONIO","JESUS","MIGUEL ANGEL","PEDRO","ALEJANDRO","MANUEL","MARGARITA","MARIA DEL CARMEN","JUAN CARLOS","ROBERTO","FERNANDO","DANIEL","CARLOS","JORGE","RICARDO","MIGUEL","EDUARDO","JAVIER","RAFAEL","MARTIN","RAUL","DAVID","JOSEFINA","JOSE ANTONIO","ARTURO","MARCO ANTONIO","JOSE MANUEL","JUAN","JOSE LUIS","JOSE","MARIA GUADALUPE","FRANCISCO","GUADALUPE","MARIA","JUANA","ANTONIO","JESUS","MIGUEL ANGEL","PEDRO","ALEJANDRO","MANUEL","MARGARITA","MARIA DEL CARMEN","JUAN CARLOS","ROBERTO","FERNANDO","DANIEL","CARLOS","JORGE","RICARDO","MIGUEL","EDUARDO","JAVIER","RAFAEL","MARTIN","RAUL","DAVID","JOSEFINA","JOSE ANTONIO","ARTURO","MARCO ANTONIO","JOSE MANUEL","JUAN","JOSE LUIS","JOSE","MARIA GUADALUPE","FRANCISCO","GUADALUPE","MARIA","JUANA","ANTONIO","JESUS","MIGUEL ANGEL","PEDRO","ALEJANDRO","MANUEL","MARGARITA","MARIA DEL CARMEN","JUAN CARLOS","ROBERTO","FERNANDO","DANIEL","CARLOS","JORGE","RICARDO","MIGUEL","EDUARDO","JAVIER","RAFAEL","MARTIN","RAUL","DAVID","JOSEFINA","JOSE ANTONIO","ARTURO","MARCO ANTONIO","JOSE MANUEL","JUAN","JOSE LUIS","JOSE","MARIA GUADALUPE","FRANCISCO","GUADALUPE","MARIA","JUANA","ANTONIO","JESUS","MIGUEL ANGEL","PEDRO","ALEJANDRO","MANUEL","MARGARITA","MARIA DEL CARMEN","JUAN CARLOS","ROBERTO","FERNANDO","DANIEL","CARLOS","JORGE","RICARDO","MIGUEL","EDUARDO","JAVIER","RAFAEL","MARTIN","RAUL","DAVID","JOSEFINA","JOSE ANTONIO","ARTURO","MARCO ANTONIO","JOSE MANUEL","JUAN","JOSE LUIS","JOSE","MARIA GUADALUPE","FRANCISCO","GUADALUPE","MARIA","JUANA","ANTONIO","JESUS","MIGUEL ANGEL","PEDRO","ALEJANDRO","MANUEL","MARGARITA","MARIA DEL CARMEN","JUAN CARLOS","ROBERTO","FERNANDO","DANIEL","CARLOS","JORGE","RICARDO","MIGUEL","EDUARDO","JAVIER","RAFAEL","MARTIN","RAUL","DAVID","JOSEFINA","JOSE ANTONIO","ARTURO","MARCO ANTONIO","JOSE MANUEL","JUAN","JOSE LUIS","JOSE","MARIA GUADALUPE","FRANCISCO","GUADALUPE","MARIA","JUANA","ANTONIO","JESUS","MIGUEL ANGEL","PEDRO","ALEJANDRO","MANUEL","MARGARITA","MARIA DEL CARMEN","JUAN CARLOS","ROBERTO","FERNANDO","DANIEL","CARLOS","JORGE","RICARDO","MIGUEL","EDUARDO","JAVIER","RAFAEL","MARTIN","RAUL","DAVID","JOSEFINA","JOSE ANTONIO","ARTURO","MARCO ANTONIO","JOSE MANUEL","JUAN","JOSE LUIS","JOSE","MARIA GUADALUPE","FRANCISCO","GUADALUPE","MARIA","JUANA","ANTONIO","JESUS","MIGUEL ANGEL","PEDRO","ALEJANDRO","MANUEL","MARGARITA","MARIA DEL CARMEN","JUAN CARLOS","ROBERTO","FERNANDO","DANIEL","CARLOS","JORGE","RICARDO","MIGUEL","EDUARDO","JAVIER","RAFAEL","MARTIN","RAUL","DAVID","JOSEFINA","JOSE ANTONIO","ARTURO","MARCO ANTONIO","JOSE MANUEL"};
     char Sexo[] = {'M','M','M','F','M','F','F','F','M','M','M','M','M','M','F','F','M','M','M','M','M','M','M','M','M','M','M','M','M','M','F','M','M','M','M'};
     char Apellido[][50]= {"González","Rodríguez","Gómez","Fernández","López","Díaz","Martínez","Pérez","Romero","Sánchez","García","Sosa","Torres","Ramírez","Álvarez","Benítez","Acosta","Flores","Medina","Ruiz","González","Rodríguez","Gómez","Fernández","López","Díaz","Martínez","Pérez","Romero","Sánchez","García","Sosa","Torres","Ramírez","Álvarez","Benítez","Acosta","Flores","Medina","Ruiz","González","Rodríguez","Gómez","Fernández","López","Díaz","Martínez","Pérez","Romero","Sánchez","García","Sosa","Torres","Ramírez","Álvarez","Benítez","Acosta","Flores","Medina","Ruiz"};
     int codigoEquipos[] = { 1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,3,3,3,3,3,3,3,3,3,3,4,4,4,4,4,4,4,4,4,4,5,5,5,5,5,5,5,5,5,5,6,6,6,6,6,6,6,6,6,6,7,7,7,7,7,7,7,7,7,7,8,8,8,8,8,8,8,8,8,8,9,9,9,9,9,9,9,9,9,9,10,10,10,10,10,10,10,10,10,10};
@@ -157,7 +158,15 @@ void abmJugadores(eEquipo equipos[], int tamanioEquipos, eJugadores jugadores[],
                         listarJugadoresPorEquipo(jugadores,tamanioJugadores,equipos,tamanioEquipos);
                         system("pause");
                         break;
+                    case 4:
+                        listarJugadoresPorNombreConEquipo(equipos,tamanioEquipos,jugadores,tamanioJugadores);
+                        system("pause");
+                        break;
                     case 5:
+                        listarEquiposJovenes(jugadores,tamanioJugadores,equipos,tamanioEquipos);
+                        system("pause");
+                        break;
+                    case 6:
                         system("cls");
                         seguirDos='n';
                         printf("\nAdios");
@@ -180,6 +189,45 @@ void abmJugadores(eEquipo equipos[], int tamanioEquipos, eJugadores jugadores[],
         }
     }
     while(seguir == 's');
+}
+
+void listarEquiposJovenes(eJugadores jugadores[],int tamanioJugadores,eEquipo equipos[], int tamanioEquipos)
+{
+    int acumulador=0,contador=0,i,j,edadAux;
+    float promedio;
+
+    for(j=0;j<tamanioJugadores;j++)
+    {
+        if(jugadores[j].isEmpty==ACTIVO)
+        {
+            edadAux=ANIO_ACTUAL-jugadores[j].fechaNac.anio;
+            acumulador=acumulador+edadAux;
+            contador++;
+        }
+    }
+
+    promedio=acumulador/contador;
+
+    printf("\n---- Equipos mas jovenes (PROMEDIO:%.2f)----",promedio);
+    printf("\n\tId  |      Nombre     |    Localidad\n\n");
+    for(i=0;i<tamanioEquipos;i++)
+    {
+        acumulador=0;
+        if(equipos[i].isEmpty==ACTIVO)
+        {
+            for(j=0;j<tamanioJugadores;j++)
+            {
+                if(jugadores[j].isEmpty==ACTIVO && jugadores[j].idEquipo==equipos[i].idEquipo)
+                {
+                    edadAux=ANIO_ACTUAL-jugadores[j].fechaNac.anio;
+                    acumulador=acumulador+edadAux;
+                }
+            }
+            if(acumulador<promedio)
+                mostrarEquipo(equipos[i]);
+        }
+    }
+
 }
 
 int equiposActivos(eEquipo equipos[], int tamanioEquipos)
@@ -301,6 +349,22 @@ void mostrarJugador(eJugadores jugador,eEquipo equipos[], int tamanioEquipos)
     char auxEquipo[51];
     cargarEquipo(equipos,tamanioEquipos,jugador.idEquipo,auxEquipo);
     printf("\n\t%3d  |  %16s  |  %16s  |  %c  |  %2d/%2d/%4d  | %16s",jugador.idJugador,jugador.nombre,jugador.apellido,jugador.sexo,jugador.fechaNac.dia,jugador.fechaNac.mes,jugador.fechaNac.anio,auxEquipo);
+}
+
+
+void listarJugadoresPorNombreConEquipo(eEquipo equipos[],int tamanioEquipo,eJugadores jugadores[],int tamanioJugadores)
+{
+    char nombreAux[31];
+
+    getValidStringRango("\nIngrese nombre a buscar:","Error, solo se admiten letras. Reintente.\n",nombreAux,31);
+    printf("\n\tId  |           Nombre   |          Apellido  |  Sexo  | Fecha de Nacimiento  | Equipo\n");
+    for(int i=0;i<tamanioJugadores;i++)
+    {
+        if(strcmp(nombreAux,jugadores[i].nombre)==0 && jugadores[i].isEmpty==ACTIVO)
+        {
+            mostrarJugador(jugadores[i],equipos,tamanioEquipo);
+        }
+    }
 }
 
 
@@ -495,8 +559,9 @@ int menuListadosJugadores(void)
     printf("  1- Listar jugadores\n");
     printf("  2- Listar jugadores ordenados alfabeticamente\n");
     printf("  3- Listar jugadores por Equipo\n");
-    //printf("  4- \n");
-    printf("  5- Salir\n");
+    printf("  4- Listar jugadores por nombre con Equipo\n");
+    printf("  5- Listar equipos mas jovenes\n");
+    printf("  6- Salir\n");
     option = getInt("Ingrese opcion: ");
     return option;
 }

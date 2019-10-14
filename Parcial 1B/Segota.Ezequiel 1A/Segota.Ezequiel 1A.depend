@@ -147,7 +147,7 @@
 	"referi.h"
 	"utn.h"
 
-1570743096 source:c:\users\ezequiel\desktop\dasdadasd\lab1-master\parcial 1b\segota.ezequiel 1a\utn.c
+1571071275 source:c:\users\ezequiel\desktop\dasdadasd\lab1-master\parcial 1b\segota.ezequiel 1a\utn.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
@@ -164,30 +164,30 @@
 	"referi.h"
 	"utn.h"
 
-1570758385 c:\users\ezequiel\desktop\dasdadasd\lab1-master\parcial 1b\segota.ezequiel 1a\jugadores.h
+1571075250 c:\users\ezequiel\desktop\dasdadasd\lab1-master\parcial 1b\segota.ezequiel 1a\jugadores.h
 	"equipos.h"
 
-1570753751 c:\users\ezequiel\desktop\dasdadasd\lab1-master\parcial 1b\segota.ezequiel 1a\equipos.h
+1571072366 c:\users\ezequiel\desktop\dasdadasd\lab1-master\parcial 1b\segota.ezequiel 1a\equipos.h
 
-1570753751 source:c:\users\ezequiel\desktop\dasdadasd\lab1-master\parcial 1b\segota.ezequiel 1a\equipos.c
+1571075459 source:c:\users\ezequiel\desktop\dasdadasd\lab1-master\parcial 1b\segota.ezequiel 1a\equipos.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"equipos.h"
 	"utn.h"
 
-1570758394 source:c:\users\ezequiel\desktop\dasdadasd\lab1-master\parcial 1b\segota.ezequiel 1a\jugadores.c
+1571072366 source:c:\users\ezequiel\desktop\dasdadasd\lab1-master\parcial 1b\segota.ezequiel 1a\jugadores.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"jugadores.h"
 	"utn.h"
 
-1570758385 c:\users\ezequiel\desktop\dasdadasd\lab1-master\parcial 1b\segota.ezequiel 1a\partidos.h
+1571073688 c:\users\ezequiel\desktop\dasdadasd\lab1-master\parcial 1b\segota.ezequiel 1a\partidos.h
 	"equipos.h"
 	"referi.h"
 
-1570757785 source:c:\users\ezequiel\desktop\dasdadasd\lab1-master\parcial 1b\segota.ezequiel 1a\partidos.c
+1571073829 source:c:\users\ezequiel\desktop\dasdadasd\lab1-master\parcial 1b\segota.ezequiel 1a\partidos.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

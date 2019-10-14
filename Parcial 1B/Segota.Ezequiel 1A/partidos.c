@@ -130,6 +130,50 @@ void mostrarPartidos(ePartido partido[], int tamanioPartido,eEquipo equipos[],in
     }
 }
 
+void listarEquiposYReferisPorFecha(ePartido partido[], int tamanioPartido,eEquipo equipos[],int tamanioEquipos,eReferi referis[],int tamanioReferi)
+{
+    int diaAux;
+    int mesAux;
+    int anioAux;
+    int i,j;
+
+    diaAux = getValidIntRango("Ingrese dia de partido: ", "Error de ingreso, reintente.\n\n", 1, 31);
+    mesAux = getValidIntRango("Ingrese mes de partido: ", "Error de ingreso, reintente.\n\n", 1, 12);
+    anioAux = getValidIntRango("Ingrese anio de partido (1950-2018): ", "Error de ingreso, reintente.\n\n", 1950, 2019);
+
+    printf("\n----- Equipos de esa fecha ----");
+    printf("\n\tId  |      Nombre     |    Localidad\n\n");
+    for(i=0;i<tamanioPartido;i++)
+    {
+        if(partido[i].isEmpty==ACTIVO && partido[i].fechaPartido.dia==diaAux && partido[i].fechaPartido.mes==mesAux && partido[i].fechaPartido.anio==anioAux)
+        {
+            for(j=0;j<tamanioEquipos;j++)
+            {
+                if((equipos[j].idEquipo == partido[i].idLocal || equipos[j].idEquipo == partido[i].idVisitante) && equipos[j].isEmpty==ACTIVO)
+                {
+                    mostrarEquipo(equipos[j]);
+                }
+            }
+        }
+    }
+
+    printf("\n----- Referis de esa fecha ----");
+    printf("\n\tId  |           Nombre   |          Apellido  |  Sexo  | Fecha de Nacimiento | Email\n\n");
+    for(i=0;i<tamanioPartido;i++)
+    {
+        if(partido[i].isEmpty==ACTIVO && partido[i].fechaPartido.dia==diaAux && partido[i].fechaPartido.mes==mesAux && partido[i].fechaPartido.anio==anioAux)
+        {
+            for(j=0;j<tamanioReferi;j++)
+            {
+                if(referis[j].idReferi == partido[i].idReferi && referis[j].isEmpty==ACTIVO)
+                {
+                    mostrarReferi(referis[j]);
+                }
+            }
+        }
+    }
+}
+
 int menuListadosPartidos(void)
 {
     int option;
@@ -137,7 +181,7 @@ int menuListadosPartidos(void)
     printf("  1- Listar Partidos\n");
     printf("  2- Listar Partidos ordenados por fecha\n");
     printf("  3- Mostrar referi con mas partidos\n");
-    //printf("  4- \n");
+    printf("  4- Listar Referis y Equipos por fecha de partido\n");
     printf("  5- Salir\n");
     option = getInt("Ingrese opcion: ");
     return option;
@@ -188,7 +232,7 @@ void altaPartidos(ePartido partido[], int tamanioPartido,eEquipo equipos[],int t
 
         diaAux = getValidIntRango("Ingrese dia de partido: ", "Error de ingreso, reintente.\n\n", 1, 31);
         mesAux = getValidIntRango("Ingrese mes de partido: ", "Error de ingreso, reintente.\n\n", 1, 12);
-        anioAux = getValidIntRango("Ingrese anio de partido (1950-2018): ", "Error de ingreso, reintente.\n\n", 1950, 2018);
+        anioAux = getValidIntRango("Ingrese anio de partido (1950-2018): ", "Error de ingreso, reintente.\n\n", 1950, 2019);
 
         nuevoPartido.idPartido = idPartido;
         nuevoPartido.idLocal = idLocalAux;
@@ -435,10 +479,15 @@ void abmPartidos(ePartido partido[], int tamanioPartido,eEquipo equipos[],int ta
                         mostrarReferiConMasPartidos(partido,tamanioPartido,referis,tamanioReferi);
                         system("pause");
                         break;
+                    case 4:
+                        listarEquiposYReferisPorFecha(partido,tamanioPartido,equipos,tamanioEquipos,referis,tamanioReferi);
+                        system("pause");
+                        break;
                     case 5:
                         system("cls");
                         seguirDos='n';
                         printf("\nAdios");
+                        break;
                     default:
                         printf("\nError\n");
                 }

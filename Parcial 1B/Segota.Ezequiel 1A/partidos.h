@@ -39,6 +39,8 @@ void listarPartidos(ePartido partido[], int tamanioPartido,eEquipo equipos[],int
 
 void mostrarReferiConMasPartidos(ePartido partido[], int tamanioPartido,eReferi referis[],int tamanioReferi);
 
+void listarEquiposYReferisPorFecha(ePartido partido[], int tamanioPartido,eEquipo equipos[],int tamanioEquipos,eReferi referis[],int tamanioReferi);
+
 int menuListadosPartidos(void);
 
 void abmPartidos(ePartido partido[], int tamanioPartido,eEquipo equipos[],int tamanioEquipos,eReferi referis[],int tamanioReferi);

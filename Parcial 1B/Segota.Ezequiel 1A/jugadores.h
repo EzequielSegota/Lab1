@@ -12,6 +12,8 @@ typedef struct
     int isEmpty;
 }eJugadores;
 
+void listarEquiposJovenes(eJugadores[],int tamanioJugadores,eEquipo equipos[], int tamanioEquipos);
+void listarJugadoresPorNombreConEquipo(eEquipo equipos[],int tamanioEquipo,eJugadores jugadores[],int tamanioJugadores);
 int getNextIdJugador(eJugadores jugadores[],int tamanioJugadores);
 int iniciarEstadosJugadores(eJugadores jugadores [], int tamanioJugadores);
 int buscarJugadoresLibre(eJugadores jugadores [], int tamanioJugadores);

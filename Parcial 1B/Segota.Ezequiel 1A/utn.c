@@ -283,7 +283,7 @@ int getStringLetrasRango(char mensaje[],char input[], int tamanio)
             getString(mensaje,aux);
             continue;
         }
-        corregirMayusculas(aux);
+        //corregirMayusculas(aux);
         strcpy(input,aux);
         return 1;
     }
