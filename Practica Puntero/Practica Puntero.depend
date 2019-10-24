@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1571928413 source:c:\users\alumno\desktop\practica puntero\main.c
+	"persona.h"
+
+1571927594 c:\users\alumno\desktop\practica puntero\persona.h
+	<stdio.h>
+	<stdlib.h>
+
+1571928641 source:c:\users\alumno\desktop\practica puntero\persona.c
+	"persona.h"
+
