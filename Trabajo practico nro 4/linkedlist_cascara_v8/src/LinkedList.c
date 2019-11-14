@@ -115,6 +115,7 @@ static int addNode(LinkedList* this, int nodeIndex,void* pElement)
     {
         len=ll_len(this);///Definimos el largo del nodo con el ll_len
         if(nodeIndex>-1 && nodeIndex<=len)///Si el indice del nodo es mayor a -1 y el indice es mayor o igual al len
+        {
             if(nodeIndex==0)
             {
                 pNewNode->pNextNode=this->pFirstNode;///El primer nodo agregado flechita a proximo nodo es igual a la lista flechita al primer nodo
@@ -126,6 +127,8 @@ static int addNode(LinkedList* this, int nodeIndex,void* pElement)
                 pNewNode->pNextNode=pActualNode->pNextNode;
                 pActualNode->pNextNode=pNewNode;
             }
+        }
+
         returnAux=0;
         this->size++;///AUMENTAMOS EL TAMAÑO DE LA LISTA EN UNO
     }
@@ -569,12 +572,17 @@ LinkedList* ll_subList(LinkedList* this,int from,int to)
 */
 LinkedList* ll_clone(LinkedList* this)
 {
-    LinkedList* cloneArray = NULL;///SETEAMOS EL VALOR DE LA LISTA CLONADA EN NULL
-
-    if (this!=NULL)///SI LA LISTA ORIGINAL ES DISTINTA DE NULL
+    LinkedList* cloneArray;
+    cloneArray=ll_newLinkedList();
+    if (this!=NULL && cloneArray!=NULL)
     {
-        cloneArray=ll_subList(this,0,this->size);///CLONAMOS TODA LA LISTA, PASANDO TODOS LOS DATOS DE LA LISTA ORIGINAL A LA NUEVA GRACIAS AL SUBLIST
+        cloneArray=ll_subList(this,0,this->size);
     }
+    else
+    {
+        cloneArray=NULL;
+    }
+
     return cloneArray;
 }
 
