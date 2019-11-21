@@ -10,9 +10,6 @@ int parser(FILE* pFile, LinkedList* this)
     int retorno = -1;
 
     char fecha[11];
-    int dia;
-    int mes;
-    int anio;
     char id_Llamada[20];
     char id_Problema[20];
     char num_Cliente[20];
@@ -38,11 +35,12 @@ int parser(FILE* pFile, LinkedList* this)
         {
             auxLlamadas = (llamadas*) malloc(sizeof(llamadas));
 
-            fscanf(pFile,"%[^,],%d/%d%/%d,%[^,],%[^,],%[^\n]\n",id_Llamada,dia,mes,anio,num_Cliente,id_Problema,solucion);
+            fscanf(pFile,"%[^,],%[^,],%[^,],%[^,],%[^\n]\n",id_Llamada,fecha,num_Cliente,id_Problema,solucion);
 
-            if(fscanf(pFile,"%[^,],%d/%d%/%d,%[^,],%[^,],%[^\n]\n",id_Llamada,&dia,&mes,&anio,num_Cliente,id_Problema,solucion)==7)
+            if(fscanf(pFile,"%[^,],%[^,],%[^,],%[^,],%[^\n]\n",id_Llamada,fecha,num_Cliente,id_Problema,solucion)==5)
             {
-                auxLlamadas = llamadas_newParametros(id_Llamada,dia,mes,anio, num_Cliente, id_Problema, solucion);
+                printf("%s",fecha);
+                auxLlamadas = llamadas_newParametros(id_Llamada,fecha, num_Cliente, id_Problema, solucion);
                 ll_add(this,auxLlamadas);
                 llamadas_print(auxLlamadas);
             }

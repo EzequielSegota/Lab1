@@ -10,14 +10,40 @@ llamadas* llamadas_new(void)
     return returnAux;
 }
 
-llamadas* llamadas_newParametros(char* id_Llamada, int dia,int mes,int anio,char* num_Cliente, char* id_Problema, char* solucion)
+llamadas* llamadas_newParametros(char* id_Llamada, char* fecha,char* num_Cliente, char* id_Problema, char* solucion)
 {
     llamadas* this;
 
     int id_LlamadaAux;
+    char diaAux[20];
+    char mesAux[20];
+    char anioAux[20];
     int numClienteAux;
     int id_ProblemaAux;
 
+    int i=0;
+    int flagBarraUno=0;
+    int flagBarraDos=0;
+
+    do
+    {
+        if(fecha[i]=='/' && flagBarraUno==0)
+        {
+            flagBarraUno=fecha[i];
+            strncpy(diaAux,fecha,flagBarraUno);
+
+        }else if(fecha[i]=='/' && flagBarraDos==0)
+        {
+            flagBarraDos=fecha[i];
+            strncpy(mesAux,fecha+flagBarraUno,flagBarraDos);
+        }
+        else
+        {
+            strncpy(anioAux,fecha+flagBarraDos,strlen(fecha)-1);
+        }
+        i++;
+    }while(fecha[i]!='\0');
+    printf("%s",diaAux);
     id_LlamadaAux=atoi(id_Llamada);
     numClienteAux=atoi(num_Cliente);
     id_ProblemaAux=atoi(id_Problema);
@@ -26,9 +52,9 @@ llamadas* llamadas_newParametros(char* id_Llamada, int dia,int mes,int anio,char
 
      if(!llamadas_setIdLlamada(this,id_LlamadaAux) &&
         !llamadas_setIdProblema(this,id_ProblemaAux) &&
-        !llamadas_setDia(this,dia) &&
-        !llamadas_setMes(this,mes) &&
-        !llamadas_setAnio(this,anio) &&
+        !llamadas_setDia(this,diaAux) &&
+        !llamadas_setMes(this,mesAux) &&
+        !llamadas_setAnio(this,anioAux) &&
         !llamadas_setNumCliente(this,numClienteAux) &&
         !llamadas_setSolucion(this,solucion)
        )

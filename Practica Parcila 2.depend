@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1574347476 source:c:\users\alumno\desktop\practica parcila 2\funciones.c
+1574348882 source:c:\users\alumno\desktop\practica parcila 2\funciones.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -11,7 +11,7 @@
 
 1574343154 c:\users\alumno\desktop\practica parcila 2\funciones.h
 
-1574347476 c:\users\alumno\desktop\practica parcila 2\llamadas.h
+1574348140 c:\users\alumno\desktop\practica parcila 2\llamadas.h
 
 1574343301 source:c:\users\alumno\desktop\practica parcila 2\linkedlist.c
 	<stdio.h>
@@ -19,7 +19,7 @@
 	<string.h>
 	"LinkedList.h"
 
-1574347519 source:c:\users\alumno\desktop\practica parcila 2\llamadas.c
+1574348924 source:c:\users\alumno\desktop\practica parcila 2\llamadas.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

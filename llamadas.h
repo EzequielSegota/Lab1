@@ -120,7 +120,7 @@ void llamadas_printAll(LinkedList* this);
  * \return llamadas* Una variable que contiene los datos de un empleado.
  *
  */
-llamadas* llamadas_newParametros(char* id_Llamada, int dia,int mes,int anio, char* num_Cliente, char* id_Problema, char* solucion);
+llamadas* llamadas_newParametros(char* id_Llamada, char* fecha, char* num_Cliente, char* id_Problema, char* solucion);
 
 /** \brief Filtra llamadas segun su edad (mayores a 30) y profesion (Programador).
  *
