@@ -7,7 +7,7 @@ int main()
 {
     FILE *fp;
     char seguir='s';
-    int opcion=0,i;
+    int opcion=0,flag=0;
 
     LinkedList* pList;
     LinkedList* listaFiltrada;
@@ -33,23 +33,96 @@ int main()
                     {
                         printf("Error.");
                     }
-
+                    else
+                    {
+                        flag=1;
+                    }
                 }
                 break;
             case 2:
                 {
-
+                    system("cls");
+                    if(flag==1)
+                    {
+                        llamadas_printAllProblemas(pList);
+                    }
+                    else{
+                        printf("\nNo hay archivo cargado");
+                    }
                 }
                 break;
              case 3:
                 {
-                    listaFiltrada=ll_filter(pList,funcionQueFiltra);
+                    system("cls");
 
-                    llamadas_printAll(listaFiltrada);
-
-                    if(crearArchivo(fp, listaFiltrada)==-1)
+                    if(flag==1)
                     {
-                        printf("Error.");
+                        int auxProblema;
+
+                        do
+                        {
+                            printf("\nIngrese ID problema para filtrar:");
+                            scanf("%d",&auxProblema);
+                        }while(auxProblema>5 || auxProblema<1);
+                        ///FALTA VALIDAR
+
+                        switch(auxProblema)
+                        {
+                            case 1:
+                                listaFiltrada=ll_filter(pList,funcionQueFiltraUno);
+                                llamadas_printAll(listaFiltrada);
+
+                                if(crearArchivo(fp, listaFiltrada)==-1)
+                                {
+                                    printf("Error.");
+                                }
+                                break;
+                            case 2:
+                                listaFiltrada=ll_filter(pList,funcionQueFiltraDos);
+                                llamadas_printAll(listaFiltrada);
+
+                                if(crearArchivo(fp, listaFiltrada)==-1)
+                                {
+                                    printf("Error.");
+                                }
+                                break;
+                            case 3:
+                                listaFiltrada=ll_filter(pList,funcionQueFiltraTres);
+                                llamadas_printAll(listaFiltrada);
+
+                                if(crearArchivo(fp, listaFiltrada)==-1)
+                                {
+                                    printf("Error.");
+                                }
+
+                                break;
+                            case 4:
+                                listaFiltrada=ll_filter(pList,funcionQueFiltraCuatro);
+                                llamadas_printAll(listaFiltrada);
+
+                                if(crearArchivo(fp, listaFiltrada)==-1)
+                                {
+                                    printf("Error.");
+                                }
+
+                                break;
+                            case 5:
+                                listaFiltrada=ll_filter(pList,funcionQueFiltraCinco);
+                                llamadas_printAll(listaFiltrada);
+
+                                if(crearArchivo(fp, listaFiltrada)==-1)
+                                {
+                                    printf("Error.");
+                                }
+
+                                break;
+                            default:
+                                printf("\nError");
+                        }
+                    }
+                    else
+                    {
+                        printf("\nNo hay archivo cargado");
                     }
                 }
                 break;

@@ -9,11 +9,11 @@ int parser(FILE* pFile, LinkedList* this)
 {
     int retorno = -1;
 
-    char fecha[11];
+    char fecha[20];
     char id_Llamada[20];
     char id_Problema[20];
     char num_Cliente[20];
-    char solucion[2];
+    char solucion[3];
 
     char nomArchivo[50];
 
@@ -30,17 +30,18 @@ int parser(FILE* pFile, LinkedList* this)
         retorno = 0;
 
         printf("\nID Llamada\tFecha\t\tNum Cliente\t\tID Prob\tSolucionado\n");
+        fscanf(pFile,"%[^,],%[^,],%[^,],%[^,],%[^\n]\n",id_Llamada,fecha,num_Cliente,id_Problema,solucion);
 
         do
         {
-            auxLlamadas = (llamadas*) malloc(sizeof(llamadas));
+          //  auxLlamadas = (llamadas*) malloc(sizeof(llamadas));
 
-            fscanf(pFile,"%[^,],%[^,],%[^,],%[^,],%[^\n]\n",id_Llamada,fecha,num_Cliente,id_Problema,solucion);
 
             if(fscanf(pFile,"%[^,],%[^,],%[^,],%[^,],%[^\n]\n",id_Llamada,fecha,num_Cliente,id_Problema,solucion)==5)
             {
-                printf("%s",fecha);
+                //printf("test");
                 auxLlamadas = llamadas_newParametros(id_Llamada,fecha, num_Cliente, id_Problema, solucion);
+                //printf("%s", fecha);
                 ll_add(this,auxLlamadas);
                 llamadas_print(auxLlamadas);
             }
@@ -68,9 +69,7 @@ int crearArchivo(FILE* pFile, LinkedList* this)
         length=ll_len(this);
         retorno=0;
 
-        int dia;
-        int mes;
-        int anio;
+        char fecha[20];
         int id_Llamada;
         int id_Problema;
         int num_Cliente;
@@ -82,13 +81,11 @@ int crearArchivo(FILE* pFile, LinkedList* this)
 
             id_Llamada=llamadas_getIdLlamadas(llamadasAux);
             id_Problema=llamadas_getIdProblema(llamadasAux);
-            dia=llamadas_getDia(llamadasAux);
-            mes=llamadas_getMes(llamadasAux);
-            anio=llamadas_getAnio(llamadasAux);
+            strcpy(fecha, llamadas_getFecha(llamadasAux));
             num_Cliente=llamadas_getNumCliente(llamadasAux);
             strcpy(solucion, llamadas_getSolucion(llamadasAux));
 
-            fprintf(pFile, "%d,%d,%d,%d,%d,%d,%s\n", id_Llamada, dia,mes,anio, num_Cliente,id_Problema,solucion);
+            fprintf(pFile, "%d,%s,%d,%d,%s\n", id_Llamada, fecha, num_Cliente,id_Problema,solucion);
         }
 
         printf("Archivo generado con exito.\n");

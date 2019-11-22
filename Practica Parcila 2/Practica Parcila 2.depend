@@ -33,3 +33,37 @@
 	"funciones.h"
 	"llamadas.h"
 
+1574428752 source:c:\users\alumno\desktop\lab1-master\practica parcila 2\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1574424978 c:\users\alumno\desktop\lab1-master\practica parcila 2\linkedlist.h
+
+1574429080 source:c:\users\alumno\desktop\lab1-master\practica parcila 2\main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"funciones.h"
+	"llamadas.h"
+
+1574423436 c:\users\alumno\desktop\lab1-master\practica parcila 2\funciones.h
+
+1574428752 c:\users\alumno\desktop\lab1-master\practica parcila 2\llamadas.h
+
+1574426943 source:c:\users\alumno\desktop\lab1-master\practica parcila 2\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"funciones.h"
+	"llamadas.h"
+
+1574428752 source:c:\users\alumno\desktop\lab1-master\practica parcila 2\llamadas.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"llamadas.h"
+

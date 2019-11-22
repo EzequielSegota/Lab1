@@ -15,50 +15,27 @@ llamadas* llamadas_newParametros(char* id_Llamada, char* fecha,char* num_Cliente
     llamadas* this;
 
     int id_LlamadaAux;
-    char diaAux[20];
-    char mesAux[20];
-    char anioAux[20];
     int numClienteAux;
     int id_ProblemaAux;
 
-    int i=0;
-    int flagBarraUno=0;
-    int flagBarraDos=0;
 
-    do
-    {
-        if(fecha[i]=='/' && flagBarraUno==0)
-        {
-            flagBarraUno=fecha[i];
-            strncpy(diaAux,fecha,flagBarraUno);
 
-        }else if(fecha[i]=='/' && flagBarraDos==0)
-        {
-            flagBarraDos=fecha[i];
-            strncpy(mesAux,fecha+flagBarraUno,flagBarraDos);
-        }
-        else
-        {
-            strncpy(anioAux,fecha+flagBarraDos,strlen(fecha)-1);
-        }
-        i++;
-    }while(fecha[i]!='\0');
-    printf("%s",diaAux);
     id_LlamadaAux=atoi(id_Llamada);
     numClienteAux=atoi(num_Cliente);
     id_ProblemaAux=atoi(id_Problema);
 
     this = llamadas_new();
 
+    //printf("llamada-%d-problema-%d-fecha-%d-numcliente-%d-solucion-%d\n",llamadas_setIdLlamada(this,id_LlamadaAux),llamadas_setIdProblema(this,id_ProblemaAux),llamadas_setFecha(this,fecha),llamadas_setNumCliente(this,numClienteAux),llamadas_setSolucion(this,solucion));
+
      if(!llamadas_setIdLlamada(this,id_LlamadaAux) &&
         !llamadas_setIdProblema(this,id_ProblemaAux) &&
-        !llamadas_setDia(this,diaAux) &&
-        !llamadas_setMes(this,mesAux) &&
-        !llamadas_setAnio(this,anioAux) &&
+        !llamadas_setFecha(this,fecha) &&
         !llamadas_setNumCliente(this,numClienteAux) &&
         !llamadas_setSolucion(this,solucion)
        )
     {
+        //printf("entro al constructor\n");
         return this;
     }
 
@@ -125,80 +102,11 @@ int llamadas_getIdProblema(llamadas* this)
     return retorno;
 }
 
-int llamadas_setDia(llamadas* this, int dia)
-{
-    int retorno = -1;
-    if(this != NULL)///Falta validar el dia
-    {
-        retorno = 0;
-        this->dia=dia;
-    }
-    return retorno;
-}
-
-int llamadas_setMes(llamadas* this, int mes)
-{
-    int retorno = -1;
-    if(this != NULL )///Falta validar mes
-    {
-        retorno = 0;
-        this->mes=mes;
-    }
-    return retorno;
-}
-
-int llamadas_setAnio(llamadas* this, int anio)
-{
-    int retorno = -1;
-    if(this != NULL)///Falta validar año
-    {
-        retorno = 0;
-        this->anio=anio;
-    }
-    return retorno;
-}
-
-int llamadas_getDia(llamadas* this)
-{
-    int retorno = -1;
-
-    if(this != NULL)
-    {
-        retorno = this->dia;
-    }
-
-    return retorno;
-}
-
-int llamadas_getMes(llamadas* this)
-{
-    int retorno = -1;
-
-    if(this != NULL)
-    {
-        retorno = this->mes;
-    }
-
-    return retorno;
-}
-
-int llamadas_getAnio(llamadas* this)
-{
-    int retorno = -1;
-
-    if(this != NULL)
-    {
-        retorno = this->anio;
-    }
-
-    return retorno;
-}
-
 int llamadas_setNumCliente(llamadas* this, int num_Cliente)
 {
     int retorno=-1;
 
-    if(this!=NULL && num_Cliente!=NULL)
+    if(this!=NULL && num_Cliente>0)
     {
         retorno=0;
         this->num_Cliente=num_Cliente;
@@ -230,6 +138,17 @@ int llamadas_setSolucion(llamadas* this, char* solucion)
     return retorno;
 }
 
+int llamadas_setFecha(llamadas* this, char* fecha)
+{
+    int retorno = -1;
+    if(this != NULL && fecha != NULL)
+    {
+        retorno = 0;
+        strcpy(this->fecha,fecha);
+    }
+    return retorno;
+}
+
 int llamadas_getSolucion(llamadas* this)
 {
     int retorno = -1;
@@ -242,28 +161,36 @@ int llamadas_getSolucion(llamadas* this)
     return retorno;
 }
 
+int llamadas_getFecha(llamadas* this)
+{
+    int retorno = -1;
+
+    if(this != NULL)
+    {
+        retorno = this->fecha;
+    }
+
+    return retorno;
+}
+
 void llamadas_print(llamadas* this)
 {
     int id_Llamadas;
     int id_Problemas;
-    int dia;
-    int mes;
-    int anio;
+    char fecha[20];
     int num_Cliente;
-    char solucion[2];
+    char solucion[3];
 
     if(this != NULL)
     {
 
         id_Llamadas=llamadas_getIdLlamadas(this);
         id_Problemas=llamadas_getIdProblema(this);
-        dia=llamadas_getDia(this);
-        mes=llamadas_getMes(this);
-        anio=llamadas_getAnio(this);
+        strcpy(fecha,llamadas_getFecha(this));
         num_Cliente=llamadas_getNumCliente(this);
         strcpy(solucion,llamadas_getSolucion(this));
 
-        printf("%d\t%2d/%2d/%4d\t\t%d\t\t%d\t%s\n", id_Llamadas,dia,mes,anio, num_Cliente, id_Problemas, solucion);
+        printf("%d\t\t%s\t%d\t\t\t%d\t%s\n", id_Llamadas,fecha, num_Cliente, id_Problemas, solucion);
     }
 
 }
@@ -289,28 +216,146 @@ void llamadas_printAll(LinkedList* this)
     }
 }
 
-int funcionQueFiltra(void* item,int filter)
+int funcionQueFiltraUno(void* item)
 {
     int retorno=0;
 
     llamadas* aux;
     aux = (llamadas*) item;
 
-    if(llamadas_getIdProblema(aux)==filter)
+    if(llamadas_getIdProblema(aux)==1)
     {
         retorno=1;
     }
 
     return retorno;
 }
-/*
-void llamadas_printAllProblemas(LinkedList* this);
-{
 
+int funcionQueFiltraDos(void* item)
+{
+    int retorno=0;
+
+    llamadas* aux;
+    aux = (llamadas*) item;
+
+    if(llamadas_getIdProblema(aux)==2)
+    {
+        retorno=1;
+    }
+
+    return retorno;
+}
+
+int funcionQueFiltraTres(void* item)
+{
+    int retorno=0;
+
+    llamadas* aux;
+    aux = (llamadas*) item;
+
+    if(llamadas_getIdProblema(aux)==3)
+    {
+        retorno=1;
+    }
+
+    return retorno;
+}
+
+int funcionQueFiltraCuatro(void* item)
+{
+    int retorno=0;
+
+    llamadas* aux;
+    aux = (llamadas*) item;
+
+    if(llamadas_getIdProblema(aux)==4)
+    {
+        retorno=1;
+    }
+
+    return retorno;
+}
+
+int funcionQueFiltraCinco(void* item)
+{
+    int retorno=0;
+
+    llamadas* aux;
+    aux = (llamadas*) item;
+
+    if(llamadas_getIdProblema(aux)==5)
+    {
+        retorno=1;
+    }
+
+    return retorno;
+}
+
+
+
+void llamadas_printAllProblemas(LinkedList* this)
+{
+    int i;
+    int length;
+    llamadas* aux;
+
+    length=ll_len(this);
+
+    printf("\nID Call\tFecha\t\tNum Cliente\t\tProblema\t\tSolucion\n");
+
+    for(i=0;i<length;i++)
+    {
+        aux=ll_get(this,i);
+
+        if(aux!=NULL)
+        {
+            llamadas_printProblema(aux);
+        }
+    }
 }
 
 void llamadas_printProblema(llamadas* this)
 {
+    int id_Llamadas;
+    int id_Problemas;
+    char fecha[20];
+    int num_Cliente;
+    char solucion[3];
 
+    char problemaUno[30]={"NO ENCIENDE LA PC"};
+    char problemaDos[30]={"NO FUNCIONA EL MOUSE"};
+    char problemaTres[30]={"NO FUNCIONA EL TECLADO"};
+    char problemaCuatro[30]={"NO HAY INTERNET"};
+    char problemaCinco[30]={"NO FUNCIONA EL TELEFONO"};
+    if(this != NULL)
+    {
+
+        id_Llamadas=llamadas_getIdLlamadas(this);
+        id_Problemas=llamadas_getIdProblema(this);
+        strcpy(fecha,llamadas_getFecha(this));
+        num_Cliente=llamadas_getNumCliente(this);
+        strcpy(solucion,llamadas_getSolucion(this));
+
+        switch(id_Problemas)
+        {
+        case 1:
+            printf("%d\t%s\t%d\t\t%s\t\t%s\n", id_Llamadas,fecha, num_Cliente, problemaUno, solucion);
+            break;
+        case 2:
+            printf("%d\t%s\t%d\t\t%s\t\t%s\n", id_Llamadas,fecha, num_Cliente, problemaDos, solucion);
+            break;
+        case 3:
+            printf("%d\t%s\t%d\t\t%s\t\t%s\n", id_Llamadas,fecha, num_Cliente, problemaTres, solucion);
+            break;
+        case 4:
+            printf("%d\t%s\t%d\t\t%s\t\t\t%s\n", id_Llamadas,fecha, num_Cliente, problemaCuatro, solucion);
+            break;
+        case 5:
+            printf("%d\t%s\t%d\t\t%s\t\t%s\n", id_Llamadas,fecha, num_Cliente, problemaCinco, solucion);
+            break;
+        default:
+            printf("\nError");
+        }
+    }
 }
-*/
+

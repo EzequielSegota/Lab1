@@ -3,13 +3,11 @@
 
 struct
 {
-    int dia;
-    int mes;
-    int anio;
+    char fecha[20];
     int id_Llamada;
     int id_Problema;
     int num_Cliente;
-    char solucion[2];
+    char solucion[3];
 
 }typedef llamadas;
 
@@ -54,9 +52,7 @@ int llamadas_getIdProblema(llamadas* this);
  * \return int Devuelve -1 si la variable de tipo llamadas* o el nombre es igual a NULL, sino 0.
  *
  */
-int llamadas_setDia(llamadas* this, int dia);
-int llamadas_setMes(llamadas* this, int mes);
-int llamadas_setAnio(llamadas* this, int anio);
+int llamadas_setFecha(llamadas* this, char* fecha);
 
 /** \brief
  *
@@ -64,9 +60,7 @@ int llamadas_setAnio(llamadas* this, int anio);
  * \return int Devuelve -1 si la variable de tipo llamadas* es igual a NULL, sino la direccion de memoria donde esta guardado el nombre.
  *
  */
-int llamadas_getDia(llamadas* this);
-int llamadas_getMes(llamadas* this);
-int llamadas_getAnio(llamadas* this);
+int llamadas_getFecha(llamadas* this);
 /** \brief Se le asigna el sueldo a una variable de tipo llamadas*.
  *
  * \param this llamadas* La variable donde se va a asignar el sueldo.
@@ -128,7 +122,15 @@ llamadas* llamadas_newParametros(char* id_Llamada, char* fecha, char* num_Client
  * \return int Devuelve 1 para mantener el elemento en la lista de salida y 0 para filtrarlo.
  *
  */
-int funcionQueFiltra(void* item, int filter);
+int funcionQueFiltraUno(void* item);
+
+int funcionQueFiltraCuatro(void* item);
+
+int funcionQueFiltraDos(void* item);
+
+int funcionQueFiltraTres(void* item);
+
+int funcionQueFiltraCinco(void* item);
 
 void llamadas_printAllProblemas(LinkedList* this);
 

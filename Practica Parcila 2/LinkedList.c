@@ -649,20 +649,13 @@ int ll_sort(LinkedList* this, int (*pFunc)(void*,void*), int order)
 
 }
 
-LinkedList* ll_filter(LinkedList* listIn , int (*functionFilter)(void*,int))
+LinkedList* ll_filter(LinkedList* listIn , int (*functionFilter)(void*))
 {
     LinkedList* returnAux=NULL;
     int i;
     int length;
 
-    int auxProblema;
 
-    do
-    {
-        printf("\nIngrese ID problema para filtrar");
-        scanf("%d",&auxProblema);
-    }while(auxProblema>5 || auxProblema<1);
-    ///FALTA VALIDAR
 
     if(listIn!=NULL && functionFilter!=NULL)
     {
@@ -674,7 +667,7 @@ LinkedList* ll_filter(LinkedList* listIn , int (*functionFilter)(void*,int))
 
             for(i=0;i<length;i++)
             {
-                if(functionFilter(ll_get(listIn,i),auxProblema)==1)
+                if(functionFilter(ll_get(listIn,i))==1)
                 {
                     ll_add(returnAux,ll_get(listIn,i));
                 }
