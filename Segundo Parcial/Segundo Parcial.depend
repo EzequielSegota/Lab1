@@ -1,0 +1,45 @@
+# depslib dependency file v1.0
+1574951581 source:d:\segota ezequiel 1c\segundo parcial\aerolinea.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"aerolinea.h"
+
+1574948575 d:\segota ezequiel 1c\segundo parcial\linkedlist.h
+
+1574951581 d:\segota ezequiel 1c\segundo parcial\aerolinea.h
+
+1574945485 source:d:\segota ezequiel 1c\segundo parcial\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"funciones.h"
+	"aerolinea.h"
+
+1574941656 d:\segota ezequiel 1c\segundo parcial\funciones.h
+
+1574948877 source:d:\segota ezequiel 1c\segundo parcial\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1574951588 source:d:\segota ezequiel 1c\segundo parcial\main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"funciones.h"
+	"aerolinea.h"
+	"validaciones.h"
+
+1574941656 d:\segota ezequiel 1c\segundo parcial\validaciones.h
+
+1574941656 source:d:\segota ezequiel 1c\segundo parcial\validaciones.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"VALIDACIONES.h"
+
