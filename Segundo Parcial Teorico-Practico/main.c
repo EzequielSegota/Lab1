@@ -33,7 +33,7 @@ void setGalaxia(eAlien* this,char*);
 //FALTAN GET
 
 
-int escribirAliens (eAlien* Lista,int tam, char* path);
+int escribirAliensBin(eAlien* Lista,int tam, char* path);
 
 int main()
 {
@@ -77,18 +77,23 @@ eAlien* contructorAlienParametros(int id,float coordX,float coorY,char* raza,cha
     return returnAux;
 }
 
-int escribirAliens (eAlien* Lista,int tam, char* path)
+int escribirAliensBin(eAlien* Lista,int tam, char* path)
 {
-    int i;
+    FILE* expedienteX;
+    eAlien* auxAlien;
+    int i,flag=0;
     if(path!=NULL)
     {
-        path=fopen("Alien.bin","wb");
+        path=fopen(expedienteX,"wb");
 
         for( i=0;i<tam;i++)
         {
-           //fwrite(,,,);
+            //auxAlien=(eAlien*)getAlienByID(Lista,i);
+            auxAlien=Lista[i];
+           fwrite(auxAlien,sizeOf(eAlien),1,expedienteX);
         }
-
+        flag=1;
         fclose(path);
     }
+    return flag;
 }
